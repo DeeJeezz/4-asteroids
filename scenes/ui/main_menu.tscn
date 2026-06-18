@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://dsohcjv8th287"]
+
+[ext_resource type="Script" uid="uid://cfll18aiohvkc" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
+
+[node name="MainMenu" type="CanvasLayer" unique_id=1931380372]
+script = ExtResource("1_sl1te")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=103126792]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GameNameLabel" type="Label" parent="ColorRect" unique_id=970281267]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -70.0
+offset_right = 37.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Asteroids"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=11035328]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 38.0
+offset_right = 47.0
+offset_bottom = 104.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartGameButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=854087225]
+layout_mode = 2
+text = "Start game"
+
+[node name="QuitButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=176417253]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="button_down" from="ColorRect/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_down"]
+[connection signal="button_down" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_down"]

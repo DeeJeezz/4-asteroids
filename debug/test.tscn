@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ciin25b4anaei"]
+
+[ext_resource type="PackedScene" uid="uid://jyt05nciv3am" path="res://scenes/player/player.tscn" id="1_bdhpj"]
+[ext_resource type="PackedScene" uid="uid://blpstx4vgrd1h" path="res://scenes/asteroid/asteroid.tscn" id="2_3hy8g"]
+
+[node name="Test" type="Node2D" unique_id=32416756]
+
+[node name="Player" parent="." unique_id=1469936958 instance=ExtResource("1_bdhpj")]
+position = Vector2(439, 55)
+collision_mask = 2
+contact_monitor = true
+max_contacts_reported = 5
+angular_damp = 2.0
+
+[node name="Asteroid" parent="." unique_id=1290099809 instance=ExtResource("2_3hy8g")]
+position = Vector2(510, 198)
+
+[node name="Asteroid2" parent="." unique_id=1308122276 instance=ExtResource("2_3hy8g")]
+position = Vector2(313, 91)
+
+[node name="Asteroid3" parent="." unique_id=1013832509 instance=ExtResource("2_3hy8g")]
+position = Vector2(356, 231)

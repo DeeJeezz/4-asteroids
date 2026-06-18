@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://jucjbv51pjy4"]
+
+[ext_resource type="Texture2D" uid="uid://fo1nltd6ulh7" path="res://assets/img/spaceship/nave tiro e cometa.png" id="1_n06if"]
+
+[resource]
+atlas = ExtResource("1_n06if")
+region = Rect2(378, 432, 18, 108)

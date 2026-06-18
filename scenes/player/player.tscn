@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://jyt05nciv3am"]
+
+[ext_resource type="Script" uid="uid://dr8mtk1e7rnqc" path="res://scenes/player/player.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="2_dovo2"]
+[ext_resource type="Script" uid="uid://ugr0sic823a3" path="res://scenes/player/gun.gd" id="2_gmlin"]
+[ext_resource type="Texture2D" uid="uid://clpnquvlh5v71" path="res://assets/img/spaceship/SpaceShip (437).png" id="2_p47bc"]
+[ext_resource type="PackedScene" uid="uid://bt4yol4gmmie6" path="res://scenes/bullet/bullet.tscn" id="3_lvxji"]
+
+[node name="Player" type="RigidBody2D" unique_id=1469936958]
+collision_mask = 0
+inertia = 0.5
+linear_damp = 0.75
+angular_damp = 0.75
+script = ExtResource("1_8afob")
+torque_force = 3.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1692506736]
+rotation = -1.5707964
+polygon = PackedVector2Array(3, -6, 12, -5, 20, -4, 23, -2, 23, 2, 20, 4, 12, 5, 3, 6, -3, 6, -7, 12, -13, 12, -18, 7, -23, 5, -23, -5, -18, -7, -13, -12, -7, -12, -3, -6)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=492740949]
+rotation = -1.5707964
+texture = ExtResource("2_p47bc")
+
+[node name="Gun" type="Node2D" parent="Sprite2D" unique_id=2025383486]
+show_behind_parent = true
+position = Vector2(27, 0)
+script = ExtResource("2_gmlin")
+bullet_scene = ExtResource("3_lvxji")
+cooldown = 0.5
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="Sprite2D/Gun" unique_id=159960807]
+rotation = 1.5707964
+
+[node name="Wrapped" type="Node" parent="." unique_id=807411937]
+script = ExtResource("2_dovo2")
+metadata/_custom_type_script = "uid://de0bx0ohcwxjy"

@@ -1,38 +1,45 @@
-@tool
 class_name Asteroid
-extends RigidBody2D
+extends CharacterBody2D
 
-@export var asteroid_resources: Array[AsteroidResource]
+@export var asteroid_configs: Array[AsteroidConfig]
 
 var _hp: int
+var _rotation_velocity: float = 0.0
 
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: FlashingSprite = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var hurtbox: Hurtbox = $Hurtbox
+@onready var hurtbox_collision_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
 
 
 func _ready() -> void:
-	sprite.material = sprite.material.duplicate()
 	
-	var resource: AsteroidResource = asteroid_resources.pick_random()
-	sprite.texture = resource.texture
-	collision_shape.shape = resource.collision_shape
-	_hp = resource.hp
+	hurtbox.hit.connect(take_hit)
+	
+	sprite.material = sprite.material.duplicate()
+
+	var config: AsteroidConfig = asteroid_configs.pick_random()
+
+	var angle: float = randf_range(0.0, TAU)
+	var speed: float = randf_range(config.min_speed, config.max_speed)
+
+	velocity = Vector2.RIGHT.rotated(angle) * speed
+	_rotation_velocity = randf_range(config.min_rotation_speed, config.max_rotation_speed)
+
+	sprite.texture = config.texture
+	collision_shape.shape = config.collision_shape
+	hurtbox_collision_shape.shape = config.collision_shape
+	hurtbox_collision_shape.scale *= 1.05
+	_hp = config.hp
 
 
-func take_hit() -> void:
-	_hp -= 1
-	_flash()
+func _physics_process(delta: float) -> void:
+	rotation += _rotation_velocity * delta
+	move_and_slide()
+
+
+func take_hit(damage: int, _source: Node) -> void:
+	_hp -= damage
+	sprite.flash()
 	if _hp <= 0:
 		queue_free()
-
-
-func _flash():
-	var sprite_material: ShaderMaterial = sprite.material
-	
-	var tween: Tween = create_tween()
-	tween.tween_method(
-		func(value: float): sprite_material.set_shader_parameter("flash_amount", value),
-		1.0,
-		0.0,
-		0.15
-	)

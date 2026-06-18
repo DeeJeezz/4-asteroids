@@ -1,34 +1,51 @@
 [gd_scene format=3 uid="uid://blpstx4vgrd1h"]
 
 [ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_j1t37"]
-[ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_resource.gd" id="2_0e8g3"]
-[ext_resource type="Texture2D" uid="uid://c258acat2apxg" path="res://resources/atlases/asteroids/2.tres" id="3_0e8g3"]
-[ext_resource type="Resource" uid="uid://c7ls6ipop3ei5" path="res://resources/asteroid/2.tres" id="3_af6hy"]
-[ext_resource type="Resource" uid="uid://dclsgohax1lxh" path="res://resources/asteroid/1.tres" id="4_af6hy"]
+[ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="2_tyfid"]
+[ext_resource type="Resource" uid="uid://c7ls6ipop3ei5" path="res://resources/asteroid/medium_asteroid.tres" id="3_af6hy"]
+[ext_resource type="Resource" uid="uid://dclsgohax1lxh" path="res://resources/asteroid/big_asteroid.tres" id="4_af6hy"]
 [ext_resource type="Shader" uid="uid://x88ownf5voh3" path="res://shaders/hit_flash_shader.tres" id="5_tyfid"]
+[ext_resource type="Texture2D" uid="uid://vn7i4p6hxrwf" path="res://resources/atlases/asteroids/big_asteroid_atlas.tres" id="6_o86us"]
+[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/flashing_sprite.gd" id="6_tyfid"]
+[ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="8_try08"]
+[ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="9_4tung"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o86us"]
 shader = ExtResource("5_tyfid")
-shader_parameter/flash_color = Vector4(5, 5, 5, 0.3)
+shader_parameter/flash_color = Vector4(5, 5, 5, 0.5)
 shader_parameter/flash_amount = 0.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8t7q7"]
-radius = 24.75764
-height = 57.668575
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_try08"]
+radius = 47.0
+height = 108.0
 
-[node name="Asteroid" type="RigidBody2D" unique_id=1290099809]
-collision_layer = 258
-collision_mask = 512
-mass = 0.1
-can_sleep = false
-max_contacts_reported = 4
+[node name="Asteroid" type="CharacterBody2D" unique_id=1666082907]
+collision_layer = 2
+motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_j1t37")
-asteroid_resources = Array[ExtResource("2_0e8g3")]([ExtResource("3_af6hy"), ExtResource("4_af6hy")])
+asteroid_configs = Array[ExtResource("2_tyfid")]([ExtResource("4_af6hy"), ExtResource("3_af6hy")])
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2023611135]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
 material = SubResource("ShaderMaterial_o86us")
-texture = ExtResource("3_0e8g3")
+texture = ExtResource("6_o86us")
 region_rect = Rect2(273, 12, 100, 107)
+script = ExtResource("6_tyfid")
+metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]
-shape = SubResource("CapsuleShape2D_8t7q7")
+shape = SubResource("CapsuleShape2D_try08")
+
+[node name="Wrapped" type="Node" parent="." unique_id=1657980441]
+script = ExtResource("8_try08")
+wrap_margin = 64.0
+metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=329576549]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("9_4tung")
+metadata/_custom_type_script = "uid://bkpfvxigulyku"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=508357110]
+debug_color = Color(0.9376211, 1.5016794e-05, 0.6293164, 0.41960785)

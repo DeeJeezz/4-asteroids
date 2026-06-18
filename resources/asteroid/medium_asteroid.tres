@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://c7ls6ipop3ei5"]
+
+[ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_x4402"]
+[ext_resource type="Texture2D" uid="uid://c258acat2apxg" path="res://resources/atlases/asteroids/medium_asteroid_atlas.tres" id="2_87rab"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ax3vx"]
+radius = 24.75764
+height = 57.668575
+
+[resource]
+script = ExtResource("1_x4402")
+texture = ExtResource("2_87rab")
+collision_shape = SubResource("CapsuleShape2D_ax3vx")
+hp = 6
+min_speed = 40.0
+max_speed = 80.0
+min_rotation_speed = -1.0
+max_rotation_speed = 1.0
+metadata/_custom_type_script = "uid://blmr3mmee6fnm"

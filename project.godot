@@ -35,7 +35,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/project_doctor_mini/plugin.cfg", "res://addons/simple_gdscript_formatter/plugin.cfg")
+enabled=PackedStringArray("res://addons/project_doctor_mini/plugin.cfg", "res://addons/script-ide/plugin.cfg", "res://addons/simple_gdscript_formatter/plugin.cfg")
 
 [file_customization]
 

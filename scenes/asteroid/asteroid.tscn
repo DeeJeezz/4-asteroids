@@ -4,14 +4,46 @@
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="2_tyfid"]
 [ext_resource type="Resource" uid="uid://c7ls6ipop3ei5" path="res://resources/asteroid/medium_asteroid.tres" id="3_af6hy"]
 [ext_resource type="Resource" uid="uid://dclsgohax1lxh" path="res://resources/asteroid/big_asteroid.tres" id="4_af6hy"]
-[ext_resource type="Shader" uid="uid://x88ownf5voh3" path="res://shaders/hit_flash_shader.tres" id="5_tyfid"]
 [ext_resource type="Texture2D" uid="uid://vn7i4p6hxrwf" path="res://resources/atlases/asteroids/big_asteroid_atlas.tres" id="6_o86us"]
-[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/flashing_sprite.gd" id="6_tyfid"]
+[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="6_tyfid"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="8_try08"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="9_4tung"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_o86us"]
-shader = ExtResource("5_tyfid")
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_try08"]
+parameter_name = "flash_amount"
+hint = 1
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4tung"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0), 2, 0.5]
+expanded_output_ports = [0]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kpy4y"]
+expanded_output_ports = [0]
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeVec4Parameter" id="VisualShaderNodeVec4Parameter_ctvhk"]
+parameter_name = "flash_color"
+default_value_enabled = true
+default_value = Vector4(5, 5, 5, 0.5)
+
+[sub_resource type="VisualShader" id="VisualShader_cy0og"]
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(948.5714, 297.14285)
+nodes/vertex/3/node = SubResource("VisualShaderNodeFloatParameter_try08")
+nodes/vertex/3/position = Vector2(-45.714287, 491.42856)
+nodes/vertex/4/node = SubResource("VisualShaderNodeMix_4tung")
+nodes/vertex/4/position = Vector2(594.2857, 297.14285)
+nodes/vertex/7/node = SubResource("VisualShaderNodeTexture_kpy4y")
+nodes/vertex/7/position = Vector2(-137.14285, -114.28571)
+nodes/vertex/8/node = SubResource("VisualShaderNodeVec4Parameter_ctvhk")
+nodes/vertex/8/position = Vector2(-720, 205.71428)
+nodes/vertex/connections = PackedInt32Array(3, 0, 4, 2, 8, 0, 4, 1, 7, 4, 0, 3, 4, 0, 0, 2, 7, 0, 4, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_28bpj"]
+shader = SubResource("VisualShader_cy0og")
 shader_parameter/flash_color = Vector4(5, 5, 5, 0.5)
 shader_parameter/flash_amount = 0.0
 
@@ -27,10 +59,14 @@ script = ExtResource("1_j1t37")
 asteroid_configs = Array[ExtResource("2_tyfid")]([ExtResource("4_af6hy"), ExtResource("3_af6hy")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
-material = SubResource("ShaderMaterial_o86us")
 texture = ExtResource("6_o86us")
 region_rect = Rect2(273, 12, 100, 107)
 script = ExtResource("6_tyfid")
+flash_material = SubResource("ShaderMaterial_28bpj")
+iframes_duration = null
+iframes_loops = null
+iframes_min_value = null
+iframes_max_value = null
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]

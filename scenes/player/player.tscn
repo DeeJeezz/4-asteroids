@@ -1,20 +1,93 @@
 [gd_scene format=3 uid="uid://jyt05nciv3am"]
 
 [ext_resource type="Script" uid="uid://dr8mtk1e7rnqc" path="res://scenes/player/player.gd" id="1_8afob"]
-[ext_resource type="Shader" uid="uid://x88ownf5voh3" path="res://shaders/hit_flash_shader.tres" id="2_75vfm"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="2_dovo2"]
 [ext_resource type="Script" uid="uid://ugr0sic823a3" path="res://scenes/player/gun.gd" id="2_gmlin"]
 [ext_resource type="Texture2D" uid="uid://clpnquvlh5v71" path="res://assets/img/spaceship/SpaceShip (437).png" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="2_qek5x"]
 [ext_resource type="PackedScene" uid="uid://bt4yol4gmmie6" path="res://scenes/bullet/bullet.tscn" id="3_lvxji"]
-[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/flashing_sprite.gd" id="4_0owmy"]
+[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="4_0owmy"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0owmy"]
-shader = ExtResource("2_75vfm")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gtgg"]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_0owmy"]
+parameter_name = "flash_amount"
+hint = 1
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_qek5x"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0), 2, 0.5]
+expanded_output_ports = [0]
+op_type = 6
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_5gtgg"]
+expanded_output_ports = [0]
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeVec4Parameter" id="VisualShaderNodeVec4Parameter_h17s1"]
+parameter_name = "flash_color"
+default_value_enabled = true
+default_value = Vector4(5, 5, 5, 0.5)
+
+[sub_resource type="VisualShader" id="VisualShader_je7p5"]
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(948.5714, 297.14285)
+nodes/vertex/3/node = SubResource("VisualShaderNodeFloatParameter_0owmy")
+nodes/vertex/3/position = Vector2(-45.714287, 491.42856)
+nodes/vertex/4/node = SubResource("VisualShaderNodeMix_qek5x")
+nodes/vertex/4/position = Vector2(594.2857, 297.14285)
+nodes/vertex/7/node = SubResource("VisualShaderNodeTexture_5gtgg")
+nodes/vertex/7/position = Vector2(-137.14285, -114.28571)
+nodes/vertex/8/node = SubResource("VisualShaderNodeVec4Parameter_h17s1")
+nodes/vertex/8/position = Vector2(-720, 205.71428)
+nodes/vertex/connections = PackedInt32Array(3, 0, 4, 2, 8, 0, 4, 1, 7, 4, 0, 3, 4, 0, 0, 2, 7, 0, 4, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fm80t"]
+shader = SubResource("VisualShader_je7p5")
 shader_parameter/flash_color = Vector4(5, 0, 0, 0.5)
 shader_parameter/flash_amount = 0.0
 
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_0owmy"]
+expanded_output_ports = [0]
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_5gtgg"]
+default_input_values = [0, 0.0, 1, 1.0, 2, 0.0]
+expanded_output_ports = [0]
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_h17s1"]
+parameter_name = "iframe_amount"
+hint = 1
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeVec4Parameter" id="VisualShaderNodeVec4Parameter_je7p5"]
+expanded_output_ports = [0]
+parameter_name = "iframes_color"
+default_value_enabled = true
+
+[sub_resource type="VisualShader" id="VisualShader_fm80t"]
+mode = 1
+flags/light_only = false
+nodes/vertex/0/position = Vector2(674.2857, 114.28571)
+nodes/vertex/4/node = SubResource("VisualShaderNodeTexture_0owmy")
+nodes/vertex/4/position = Vector2(-125.71429, -308.57144)
+nodes/vertex/5/node = SubResource("VisualShaderNodeMix_5gtgg")
+nodes/vertex/5/position = Vector2(342.85715, 148.57143)
+nodes/vertex/6/node = SubResource("VisualShaderNodeFloatParameter_h17s1")
+nodes/vertex/6/position = Vector2(-285.7143, 560)
+nodes/vertex/7/node = SubResource("VisualShaderNodeVec4Parameter_je7p5")
+nodes/vertex/7/position = Vector2(-434.2857, 102.85714)
+nodes/vertex/connections = PackedInt32Array(6, 0, 5, 2, 7, 4, 5, 1, 5, 0, 0, 3, 4, 4, 5, 0)
+nodes/fragment/0/position = Vector2(617.1429, 148.57143)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx1jg"]
+shader = SubResource("VisualShader_fm80t")
+shader_parameter/iframes_color = Vector4(0, 0, 0, 0.4)
+shader_parameter/iframe_amount = 0.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1087837171]
+material = SubResource("ShaderMaterial_5gtgg")
 collision_mask = 2
 motion_mode = 1
 slide_on_ceiling = false
@@ -39,10 +112,13 @@ rotation = -1.5707964
 polygon = PackedVector2Array(3, -6, 12, -5, 20, -4, 23, -2, 23, 2, 20, 4, 12, 5, 3, 6, -3, 6, -7, 12, -13, 12, -18, 7, -23, 5, -23, -5, -18, -7, -13, -12, -7, -12, -3, -6)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1323982878]
-material = SubResource("ShaderMaterial_0owmy")
 rotation = -1.5707964
 texture = ExtResource("2_p47bc")
 script = ExtResource("4_0owmy")
+flash_material = SubResource("ShaderMaterial_fm80t")
+iframes_material = SubResource("ShaderMaterial_gx1jg")
+iframes_duration = 0.15
+iframes_loops = 3
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="Gun" type="Node2D" parent="Sprite2D" unique_id=2025383486]

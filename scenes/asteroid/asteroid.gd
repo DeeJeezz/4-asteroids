@@ -6,7 +6,7 @@ extends CharacterBody2D
 var _hp: int
 var _rotation_velocity: float = 0.0
 
-@onready var sprite: FlashingSprite = $Sprite2D
+@onready var sprite: MaterialSprite = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var hurtbox_collision_shape: CollisionShape2D = $Hurtbox/CollisionShape2D
@@ -15,8 +15,6 @@ var _rotation_velocity: float = 0.0
 func _ready() -> void:
 	
 	hurtbox.hit.connect(take_hit)
-	
-	sprite.material = sprite.material.duplicate()
 
 	var config: AsteroidConfig = asteroid_configs.pick_random()
 

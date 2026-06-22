@@ -3,8 +3,7 @@ extends Area2D
 
 signal hit(damage: int, source: Node)
 
-
-var collision_shape
+var collision_shape: Node2D
 
 
 func _ready() -> void:
@@ -15,13 +14,16 @@ func _ready() -> void:
 		elif child is CollisionPolygon2D:
 			collision_shape = child as CollisionPolygon2D
 			break
-	
+
 	body_entered.connect(_on_body_entered)
 	area_entered.connect(_on_area_entered)
 
 
 func set_disabled_collision_shape(disable: bool) -> void:
-	collision_shape.disabled = disable
+	if collision_shape is CollisionPolygon2D:
+		(collision_shape as CollisionPolygon2D).disabled = disable
+	elif collision_shape is CollisionShape2D:
+		(collision_shape as CollisionShape2D).disabled = disable
 
 
 func _on_body_entered(body: Node) -> void:

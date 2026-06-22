@@ -19,4 +19,4 @@ func shoot() -> void:
 	bullet.global_rotation = bullet_spawn_point.global_rotation
 	get_tree().current_scene.add_child(bullet)
 	_can_shoot = false
-	get_tree().create_timer(cooldown).timeout.connect(func (): _can_shoot = true)
+	get_tree().create_timer(cooldown).timeout.connect(func () -> void: _can_shoot = true)

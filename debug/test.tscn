@@ -1,20 +1,28 @@
 [gd_scene format=3 uid="uid://ciin25b4anaei"]
 
 [ext_resource type="PackedScene" uid="uid://jyt05nciv3am" path="res://scenes/player/player.tscn" id="1_bdhpj"]
-[ext_resource type="PackedScene" uid="uid://blpstx4vgrd1h" path="res://scenes/asteroid/asteroid.tscn" id="2_3hy8g"]
-[ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="3_08xoe"]
-[ext_resource type="Resource" uid="uid://dclsgohax1lxh" path="res://resources/asteroid/big_asteroid.tres" id="4_xow25"]
-[ext_resource type="Resource" uid="uid://c7ls6ipop3ei5" path="res://resources/asteroid/medium_asteroid.tres" id="5_xow25"]
+[ext_resource type="PackedScene" uid="uid://blpstx4vgrd1h" path="res://scenes/asteroid/big_asteroid.tscn" id="2_3hy8g"]
+[ext_resource type="Script" uid="uid://cgumvidsxp40b" path="res://scripts/components/entity_spawner.gd" id="3_3hy8g"]
+[ext_resource type="PackedScene" uid="uid://cppqdq3tcg5dt" path="res://scenes/asteroid/medium_asteroid.tscn" id="4_08xoe"]
 
 [node name="Test" type="Node2D" unique_id=32416756]
 
 [node name="Player" parent="." unique_id=1469936958 instance=ExtResource("1_bdhpj")]
 position = Vector2(439, 55)
 
-[node name="Asteroid" parent="." unique_id=1290099809 instance=ExtResource("2_3hy8g")]
-position = Vector2(510, 198)
-asteroid_configs = Array[ExtResource("3_08xoe")]([ExtResource("4_xow25")])
+[node name="BigAsteroid" parent="." unique_id=1666082907 instance=ExtResource("2_3hy8g")]
+position = Vector2(110, 160)
 
-[node name="Asteroid2" parent="." unique_id=1666082907 instance=ExtResource("2_3hy8g")]
-position = Vector2(510, 198)
-asteroid_configs = Array[ExtResource("3_08xoe")]([ExtResource("5_xow25")])
+[node name="BigAsteroid2" parent="." unique_id=2059514518 instance=ExtResource("2_3hy8g")]
+position = Vector2(372, 228)
+
+[node name="EntitySpawner" type="Node" parent="." unique_id=1679433006]
+script = ExtResource("3_3hy8g")
+big_asteroid_scene = ExtResource("2_3hy8g")
+metadata/_custom_type_script = "uid://cgumvidsxp40b"
+
+[node name="MediumAsteroid" parent="." unique_id=2000554317 instance=ExtResource("4_08xoe")]
+position = Vector2(287, 76)
+
+[node name="MediumAsteroid2" parent="." unique_id=795635981 instance=ExtResource("4_08xoe")]
+position = Vector2(567, 238)

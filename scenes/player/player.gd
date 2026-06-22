@@ -9,7 +9,6 @@ extends CharacterBody2D
 
 var _target_thrust: float = 0
 var _target_torque: float = 0
-var _iframes: bool = false
 
 @onready var gun: Gun = $Sprite2D/Gun
 @onready var sprite: MaterialSprite = $Sprite2D
@@ -28,13 +27,6 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 
-	if _iframes:
-		if _possible_to_disable_iframes():
-			_iframes = false
-		else:
-			if get_tree().get_frame() % 15 == 0:
-				sprite.iframes().finished.connect(sprite.iframes)
-
 	var forward := Vector2.DOWN.rotated(rotation)
 	velocity += forward * _target_thrust * delta
 	rotation += _target_torque * delta
@@ -47,12 +39,7 @@ func _physics_process(delta: float) -> void:
 
 
 func take_hit(_damage: int, _source: Node) -> void:
-	if _iframes:
-		sprite.iframes().finished.connect(sprite.iframes)
-		return
-
-	_iframes = true
-	sprite.flash().finished.connect(sprite.iframes)
+	sprite.flash()
 
 
 func _handle_input() -> void:
@@ -63,8 +50,7 @@ func _handle_input() -> void:
 	_target_torque = rotation_thrust * rotation_speed
 
 	if Input.is_action_pressed(&"shoot"):
-		if not _iframes:
-			gun.shoot()
+		gun.shoot()
 
 
 func _possible_to_disable_iframes() -> bool:

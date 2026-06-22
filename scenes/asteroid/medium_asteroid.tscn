@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cppqdq3tcg5dt"]
 
 [ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_laca6"]
+[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="1_n7giq"]
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="2_3w2re"]
 [ext_resource type="Resource" uid="uid://drj3if4bfibcv" path="res://resources/asteroid/medium_asteroid_1.tres" id="3_7heol"]
 [ext_resource type="Resource" uid="uid://dtm0hnn8xh4hm" path="res://resources/asteroid/medium_asteroid_2.tres" id="4_7heol"]
@@ -11,43 +12,22 @@
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="7_glrq7"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="8_en5d5"]
 
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_try08"]
-parameter_name = "flash_amount"
-hint = 1
-default_value_enabled = true
-
-[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4tung"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0), 2, 0.5]
-expanded_output_ports = [0]
-op_type = 6
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kpy4y"]
-expanded_output_ports = [0]
-texture_type = 1
-
-[sub_resource type="VisualShaderNodeVec4Parameter" id="VisualShaderNodeVec4Parameter_ctvhk"]
-parameter_name = "flash_color"
-default_value_enabled = true
-default_value = Vector4(5, 5, 5, 0.5)
-
-[sub_resource type="VisualShader" id="VisualShader_cy0og"]
-mode = 1
-flags/light_only = false
-nodes/vertex/0/position = Vector2(948.5714, 297.14285)
-nodes/vertex/3/node = SubResource("VisualShaderNodeFloatParameter_try08")
-nodes/vertex/3/position = Vector2(-45.714287, 491.42856)
-nodes/vertex/4/node = SubResource("VisualShaderNodeMix_4tung")
-nodes/vertex/4/position = Vector2(594.2857, 297.14285)
-nodes/vertex/7/node = SubResource("VisualShaderNodeTexture_kpy4y")
-nodes/vertex/7/position = Vector2(-137.14285, -114.28571)
-nodes/vertex/8/node = SubResource("VisualShaderNodeVec4Parameter_ctvhk")
-nodes/vertex/8/position = Vector2(-720, 205.71428)
-nodes/vertex/connections = PackedInt32Array(3, 0, 4, 2, 8, 0, 4, 1, 7, 4, 0, 3, 4, 0, 0, 2, 7, 0, 4, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_28bpj"]
-shader = SubResource("VisualShader_cy0og")
-shader_parameter/flash_color = Vector4(5, 5, 5, 0.5)
-shader_parameter/flash_amount = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7giq"]
+shader = ExtResource("1_n7giq")
+shader_parameter/use_cracks = true
+shader_parameter/use_hit_flash = false
+shader_parameter/use_iframes_flash = false
+shader_parameter/crack_color = Color(0.3973318, 0, 0.0056484086, 1)
+shader_parameter/crack_amount = 0.0
+shader_parameter/crack_scale = 12.000000475
+shader_parameter/crack_thickness = 0.0250000011875
+shader_parameter/crack_opacity = 1.0
+shader_parameter/crack_pixel_snap = 16.0
+shader_parameter/crack_seed = 0.0
+shader_parameter/hit_flash_color = Color(0.6325899, 0.63259006, 0.63259, 0.6)
+shader_parameter/hit_flash_amount = 0.0
+shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
+shader_parameter/iframes_speed = 12.0000001788144
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5gtgg"]
 points = PackedVector2Array(-49, -13, -41, -26, -51, -36, -44, -53, 15, -52, 49, -17, 49, 28, 41, 46, 30, 46, 19, 41, 5, 53, -18, 52, -42, 42, -42, 28, -34, 12)
@@ -60,10 +40,10 @@ script = ExtResource("1_laca6")
 asteroid_configs = Array[ExtResource("2_3w2re")]([ExtResource("3_7heol"), ExtResource("4_7heol"), ExtResource("5_7heol"), ExtResource("6_n7giq")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
+material = SubResource("ShaderMaterial_n7giq")
 texture = ExtResource("6_7heol")
 region_rect = Rect2(273, 12, 100, 107)
 script = ExtResource("6_gxs1h")
-flash_material = SubResource("ShaderMaterial_28bpj")
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]

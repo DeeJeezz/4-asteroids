@@ -33,11 +33,13 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotation += _rotation_velocity * delta
+	
 	move_and_slide()
 
 
 func take_hit(damage: int, _source: Node) -> void:
 	_hp -= damage
 	sprite.flash()
+	sprite.cracks()
 	if _hp <= 0:
 		queue_free()

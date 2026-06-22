@@ -5,18 +5,18 @@
 [ext_resource type="Resource" uid="uid://dclsgohax1lxh" path="res://resources/asteroid/big_asteroid_1.tres" id="4_af6hy"]
 [ext_resource type="Resource" uid="uid://nc58d5v1iu4l" path="res://resources/asteroid/big_asteroid_2.tres" id="4_vvhxa"]
 [ext_resource type="Texture2D" uid="uid://vn7i4p6hxrwf" path="res://resources/atlases/asteroids/big_asteroid_atlas_1.tres" id="5_suqjk"]
-[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/asteroid.gdshader" id="5_tsylp"]
+[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="5_tsylp"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="6_tyfid"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="8_try08"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="9_4tung"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_suqjk"]
 shader = ExtResource("5_tsylp")
-shader_parameter/use_cracks = false
+shader_parameter/use_cracks = true
 shader_parameter/use_hit_flash = false
 shader_parameter/use_iframes_flash = false
-shader_parameter/crack_color = Color(0.72893435, 0.022038072, 9.62615e-08, 1)
-shader_parameter/crack_amount = 1.0
+shader_parameter/crack_color = Color(0.3973318, 0, 0.0056484086, 1)
+shader_parameter/crack_amount = 0.0
 shader_parameter/crack_scale = 12.000000475
 shader_parameter/crack_thickness = 0.0250000011875
 shader_parameter/crack_opacity = 1.0
@@ -26,44 +26,6 @@ shader_parameter/hit_flash_color = Color(0.6325899, 0.63259006, 0.63259, 0.6)
 shader_parameter/hit_flash_amount = 0.0
 shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
 shader_parameter/iframes_speed = 12.0000001788144
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_try08"]
-parameter_name = "flash_amount"
-hint = 1
-default_value_enabled = true
-
-[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4tung"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0), 2, 0.5]
-expanded_output_ports = [0]
-op_type = 6
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kpy4y"]
-expanded_output_ports = [0]
-texture_type = 1
-
-[sub_resource type="VisualShaderNodeVec4Parameter" id="VisualShaderNodeVec4Parameter_ctvhk"]
-parameter_name = "flash_color"
-default_value_enabled = true
-default_value = Vector4(5, 5, 5, 0.5)
-
-[sub_resource type="VisualShader" id="VisualShader_cy0og"]
-mode = 1
-flags/light_only = false
-nodes/vertex/0/position = Vector2(948.5714, 297.14285)
-nodes/vertex/3/node = SubResource("VisualShaderNodeFloatParameter_try08")
-nodes/vertex/3/position = Vector2(-45.714287, 491.42856)
-nodes/vertex/4/node = SubResource("VisualShaderNodeMix_4tung")
-nodes/vertex/4/position = Vector2(594.2857, 297.14285)
-nodes/vertex/7/node = SubResource("VisualShaderNodeTexture_kpy4y")
-nodes/vertex/7/position = Vector2(-137.14285, -114.28571)
-nodes/vertex/8/node = SubResource("VisualShaderNodeVec4Parameter_ctvhk")
-nodes/vertex/8/position = Vector2(-720, 205.71428)
-nodes/vertex/connections = PackedInt32Array(3, 0, 4, 2, 8, 0, 4, 1, 7, 4, 0, 3, 4, 0, 0, 2, 7, 0, 4, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_28bpj"]
-shader = SubResource("VisualShader_cy0og")
-shader_parameter/flash_color = Vector4(5, 5, 5, 0.5)
-shader_parameter/flash_amount = 0.0
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_tsylp"]
 points = PackedVector2Array(-90, -51, -56, -87, 5, -107, 32, -102, 48, -114, 93, -97, 98, -80, 91, -54, 112, -8, 81, 22, 100, 61, 92, 88, 40, 90, -5, 112, -56, 101, -72, 79, -112, 57)
@@ -80,7 +42,7 @@ material = SubResource("ShaderMaterial_suqjk")
 texture = ExtResource("5_suqjk")
 region_rect = Rect2(273, 12, 100, 107)
 script = ExtResource("6_tyfid")
-flash_material = SubResource("ShaderMaterial_28bpj")
+hit_flash_duration = 0.3
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]

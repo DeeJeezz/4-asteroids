@@ -6,19 +6,25 @@
 [ext_resource type="Texture2D" uid="uid://clpnquvlh5v71" path="res://assets/img/spaceship/SpaceShip (437).png" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="2_qek5x"]
 [ext_resource type="PackedScene" uid="uid://bt4yol4gmmie6" path="res://scenes/bullet/bullet.tscn" id="3_lvxji"]
+[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="4_0owmy"]
-[ext_resource type="Shader" uid="uid://x88ownf5voh3" path="res://shaders/hit_flash_shader.tres" id="5_5gtgg"]
-[ext_resource type="Shader" uid="uid://b3xw3dbx2xy0u" path="res://shaders/iframes_shader.tres" id="6_h17s1"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fm80t"]
-shader = ExtResource("5_5gtgg")
-shader_parameter/flash_color = Vector4(5, 0, 0, 0.5)
-shader_parameter/flash_amount = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx1jg"]
-shader = ExtResource("6_h17s1")
-shader_parameter/iframes_color = Vector4(0, 0, 0, 0.4)
-shader_parameter/iframe_amount = 0.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tsylp"]
+shader = ExtResource("3_qek5x")
+shader_parameter/use_cracks = false
+shader_parameter/use_hit_flash = false
+shader_parameter/use_iframes_flash = false
+shader_parameter/crack_color = Color(0.05, 0.04, 0.03, 1)
+shader_parameter/crack_amount = 1.0
+shader_parameter/crack_scale = 12.0
+shader_parameter/crack_thickness = 0.025
+shader_parameter/crack_opacity = 1.0
+shader_parameter/crack_pixel_snap = 16.0
+shader_parameter/crack_seed = 0.0
+shader_parameter/hit_flash_color = Color(1, 0, 0.07016479, 0.675)
+shader_parameter/hit_flash_amount = 0.0
+shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
+shader_parameter/iframes_speed = 16.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1087837171]
 collision_mask = 2
@@ -45,13 +51,11 @@ rotation = -1.5707964
 polygon = PackedVector2Array(3, -6, 12, -5, 20, -4, 23, -2, 23, 2, 20, 4, 12, 5, 3, 6, -3, 6, -7, 12, -13, 12, -18, 7, -23, 5, -23, -5, -18, -7, -13, -12, -7, -12, -3, -6)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1323982878]
+material = SubResource("ShaderMaterial_tsylp")
 rotation = -1.5707964
 texture = ExtResource("2_p47bc")
 script = ExtResource("4_0owmy")
-flash_material = SubResource("ShaderMaterial_fm80t")
-iframes_material = SubResource("ShaderMaterial_gx1jg")
-iframes_duration = 0.15
-iframes_loops = 3
+hit_flash_duration = 0.5
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="Gun" type="Node2D" parent="Sprite2D" unique_id=2025383486]

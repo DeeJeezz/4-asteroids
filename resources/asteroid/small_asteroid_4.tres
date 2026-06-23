@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://cj3l1dipe2hhe"]
+
+[ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_4bnyf"]
+[ext_resource type="Texture2D" uid="uid://r2h1ucedfcqh" path="res://resources/atlases/asteroids/small_asteroid_atlas_4.tres" id="2_4bnyf"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4bnyf"]
+points = PackedVector2Array(1, 13, -8, 10, -12, 4, -10, -1, -9, -9, -5, -13, 7, -11, 12, -2, 4, 10)
+
+[resource]
+script = ExtResource("1_4bnyf")
+texture = ExtResource("2_4bnyf")
+collision_shape = SubResource("ConvexPolygonShape2D_4bnyf")
+hp = 2
+min_speed = 35.0
+max_speed = 60.0
+min_rotation_speed = -2.25
+max_rotation_speed = 2.25
+metadata/_custom_type_script = "uid://blmr3mmee6fnm"

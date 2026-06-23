@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://1b4b5yqhsn7j"]
+
+[ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_0ip10"]
+[ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="2_t3mwc"]
+[ext_resource type="Resource" uid="uid://crvem31agx6ae" path="res://resources/asteroid/small_asteroid_1.tres" id="3_0ip10"]
+[ext_resource type="Resource" uid="uid://dqa327tlx5hkw" path="res://resources/asteroid/small_asteroid_2.tres" id="4_t3mwc"]
+[ext_resource type="Resource" uid="uid://bygxjbku0pilq" path="res://resources/asteroid/small_asteroid_3.tres" id="5_i1qec"]
+[ext_resource type="Resource" uid="uid://cj3l1dipe2hhe" path="res://resources/asteroid/small_asteroid_4.tres" id="6_lhqmj"]
+[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="7_pr34l"]
+[ext_resource type="Texture2D" uid="uid://r2h1ucedfcqh" path="res://resources/atlases/asteroids/small_asteroid_atlas_4.tres" id="8_0ip10"]
+[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="9_65jkg"]
+[ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="10_17pdv"]
+[ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="11_i6fvb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7giq"]
+shader = ExtResource("7_pr34l")
+shader_parameter/use_cracks = true
+shader_parameter/use_hit_flash = false
+shader_parameter/use_iframes_flash = false
+shader_parameter/crack_color = Color(0.3973318, 0, 0.0056484086, 1)
+shader_parameter/crack_amount = 0.0
+shader_parameter/crack_scale = 12.000000475
+shader_parameter/crack_thickness = 0.0250000011875
+shader_parameter/crack_opacity = 1.0
+shader_parameter/crack_pixel_snap = 16.0
+shader_parameter/crack_seed = 0.0
+shader_parameter/hit_flash_color = Color(0.6325899, 0.63259006, 0.63259, 0.6)
+shader_parameter/hit_flash_amount = 0.0
+shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
+shader_parameter/iframes_speed = 12.0000001788144
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_85bag"]
+points = PackedVector2Array(1, 13, -8, 10, -12, 4, -10, -1, -9, -9, -5, -13, 7, -11, 12, -2, 4, 10)
+
+[node name="SmallAsteroid" type="CharacterBody2D" unique_id=1666082907]
+collision_layer = 2
+motion_mode = 1
+platform_on_leave = 2
+script = ExtResource("1_0ip10")
+asteroid_configs = Array[ExtResource("2_t3mwc")]([ExtResource("3_0ip10"), ExtResource("4_t3mwc"), ExtResource("5_i1qec"), ExtResource("6_lhqmj")])
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
+material = SubResource("ShaderMaterial_n7giq")
+texture = ExtResource("8_0ip10")
+region_rect = Rect2(273, 12, 100, 107)
+script = ExtResource("9_65jkg")
+metadata/_custom_type_script = "uid://dguveqsuf868b"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]
+shape = SubResource("ConvexPolygonShape2D_85bag")
+
+[node name="Wrapped" type="Node" parent="." unique_id=1657980441]
+script = ExtResource("10_17pdv")
+wrap_margin = 128.0
+metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=329576549]
+collision_layer = 256
+collision_mask = 512
+script = ExtResource("11_i6fvb")
+metadata/_custom_type_script = "uid://bkpfvxigulyku"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=508357110]
+debug_color = Color(0.9376211, 1.5016794e-05, 0.6293164, 0.41960785)

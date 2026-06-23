@@ -2,11 +2,22 @@
 
 [ext_resource type="Script" uid="uid://d2axart1iqwl2" path="res://scenes/world/world.gd" id="1_dphjl"]
 [ext_resource type="PackedScene" uid="uid://jyt05nciv3am" path="res://scenes/player/player.tscn" id="2_sl2e5"]
+[ext_resource type="Script" uid="uid://cgumvidsxp40b" path="res://scripts/components/entity_spawner.gd" id="3_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://blpstx4vgrd1h" path="res://scenes/asteroid/big_asteroid.tscn" id="3_v5dby"]
+[ext_resource type="PackedScene" uid="uid://cppqdq3tcg5dt" path="res://scenes/asteroid/medium_asteroid.tscn" id="4_t5ptc"]
 
 [node name="World" type="Node2D" unique_id=1713281119]
 script = ExtResource("1_dphjl")
-player_scene = ExtResource("2_sl2e5")
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1826386014]
 
 [node name="Entities" type="Node2D" parent="." unique_id=1617050387]
+
+[node name="EntitySpawner" type="Node" parent="." unique_id=1003307011]
+script = ExtResource("3_1fp7r")
+big_asteroid_scene = ExtResource("3_v5dby")
+big_asteroid_probability = 0.0
+medium_asteroid_scene = ExtResource("4_t5ptc")
+small_asteroid_scene = ExtResource("4_t5ptc")
+player_scene = ExtResource("2_sl2e5")
+metadata/_custom_type_script = "uid://cgumvidsxp40b"

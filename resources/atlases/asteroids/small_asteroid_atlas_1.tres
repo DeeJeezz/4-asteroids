@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://co1oqsrcde4hb"]
+
+[ext_resource type="Texture2D" uid="uid://cfskyrmr1l8mi" path="res://assets/img/asteroids/PixelStarshipsPackage_Asteroids_01.png" id="1_spolr"]
+
+[resource]
+atlas = ExtResource("1_spolr")
+region = Rect2(3, 4, 26, 25)

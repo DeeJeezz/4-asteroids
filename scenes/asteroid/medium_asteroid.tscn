@@ -3,12 +3,11 @@
 [ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_laca6"]
 [ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="1_n7giq"]
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="2_3w2re"]
-[ext_resource type="Resource" uid="uid://drj3if4bfibcv" path="res://resources/asteroid/medium_asteroid_1.tres" id="3_7heol"]
-[ext_resource type="Resource" uid="uid://dtm0hnn8xh4hm" path="res://resources/asteroid/medium_asteroid_2.tres" id="4_7heol"]
-[ext_resource type="Resource" uid="uid://c0tfxx14vtuf3" path="res://resources/asteroid/medium_asteroid_3.tres" id="5_7heol"]
-[ext_resource type="Texture2D" uid="uid://c4ibf4myp5kf6" path="res://resources/atlases/asteroids/medium_asteroid_atlas_4.tres" id="6_7heol"]
+[ext_resource type="Resource" uid="uid://cfdkordoyt28m" path="res://resources/asteroid/medium_asteroid_1.tres" id="3_7heol"]
+[ext_resource type="Resource" uid="uid://bdu88sumgb0ty" path="res://resources/asteroid/medium_asteroid_2.tres" id="4_7heol"]
+[ext_resource type="Texture2D" uid="uid://cjdlgdyartyix" path="res://resources/atlases/asteroids/medium_asteroid_atlas_3.tres" id="5_3w2re"]
+[ext_resource type="Resource" uid="uid://b254prbwjt6p6" path="res://resources/asteroid/medium_asteroid_3.tres" id="5_7heol"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="6_gxs1h"]
-[ext_resource type="Resource" uid="uid://y6l31q2piigp" path="res://resources/asteroid/medium_asteroid_4.tres" id="6_n7giq"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="7_glrq7"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="8_en5d5"]
 
@@ -29,25 +28,25 @@ shader_parameter/hit_flash_amount = 0.0
 shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
 shader_parameter/iframes_speed = 12.0000001788144
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_5gtgg"]
-points = PackedVector2Array(-49, -13, -41, -26, -51, -36, -44, -53, 15, -52, 49, -17, 49, 28, 41, 46, 30, 46, 19, 41, 5, 53, -18, 52, -42, 42, -42, 28, -34, 12)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_85bag"]
+points = PackedVector2Array(-1, -19, 9, -26, 24, -21, 23, 0, 13, 16, -2, 27, -14, 23, -19, 18, -16, 8, -23, -5, -24, -22, -15, -24, -7, -20)
 
 [node name="MediumAsteroid" type="CharacterBody2D" unique_id=1666082907]
 collision_layer = 2
 motion_mode = 1
 platform_on_leave = 2
 script = ExtResource("1_laca6")
-asteroid_configs = Array[ExtResource("2_3w2re")]([ExtResource("3_7heol"), ExtResource("4_7heol"), ExtResource("5_7heol"), ExtResource("6_n7giq")])
+asteroid_configs = Array[ExtResource("2_3w2re")]([ExtResource("3_7heol"), ExtResource("4_7heol"), ExtResource("5_7heol")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
 material = SubResource("ShaderMaterial_n7giq")
-texture = ExtResource("6_7heol")
+texture = ExtResource("5_3w2re")
 region_rect = Rect2(273, 12, 100, 107)
 script = ExtResource("6_gxs1h")
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]
-shape = SubResource("ConvexPolygonShape2D_5gtgg")
+shape = SubResource("ConvexPolygonShape2D_85bag")
 
 [node name="Wrapped" type="Node" parent="." unique_id=1657980441]
 script = ExtResource("7_glrq7")

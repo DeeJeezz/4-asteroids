@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bpetnakgkqf7v" path="res://scenes/bullet/bullet.gd" id="1_7c8un"]
 [ext_resource type="Script" uid="uid://c5gljbrgj0762" path="res://scripts/components/destroy_off_screen.gd" id="2_83itf"]
-[ext_resource type="Texture2D" uid="uid://jucjbv51pjy4" path="res://resources/bullet/bulet.tres" id="2_c6pnf"]
+[ext_resource type="Texture2D" uid="uid://jucjbv51pjy4" path="res://resources/bullet/bullet.tres" id="2_c6pnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c8un"]
 size = Vector2(2, 12)

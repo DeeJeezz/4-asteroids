@@ -5,11 +5,6 @@ extends Sprite2D
 @export var hit_flash_duration: float = 0.15
 @export_range(0, 1, 0.05) var hit_flash_min_value: float = 0.0
 @export_range(0, 1, 0.05) var hit_flash_max_value: float = 1.0
-#@export_group("IFrames settings", "iframes")
-#@export var iframes_duration: float = 0.3
-#@export var iframes_loops: int = 6
-#@export_range(0, 1, 0.05) var iframes_min_value: float = 0.0
-#@export_range(0, 1, 0.05) var iframes_max_value: float = 1.0
 
 
 func _ready() -> void:

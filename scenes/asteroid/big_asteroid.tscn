@@ -33,13 +33,15 @@ shader_parameter/iframes_speed = 12.0000001788144
 atlas = ExtResource("8_8wc3i")
 region = Rect2(19, 142, 100, 102)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_tsylp"]
-points = PackedVector2Array(-90, -51, -56, -87, 5, -107, 32, -102, 48, -114, 93, -97, 98, -80, 91, -54, 112, -8, 81, 22, 100, 61, 92, 88, 40, 90, -5, 112, -56, 101, -72, 79, -112, 57)
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ekkxt"]
+points = PackedVector2Array(-47, -20, -28, -29, -20, -49, 25, -49, 48, -18, 40, -4, 50, 27, 45, 44, 8, 32, -8, 50, -42, 44, -47, 31, -37, 17, -49, -7)
 
 [node name="BigAsteroid" type="CharacterBody2D" unique_id=1666082907]
 collision_layer = 2
+collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
+platform_floor_layers = 4294901760
 script = ExtResource("1_j1t37")
 asteroid_configs = Array[ExtResource("2_tyfid")]([ExtResource("4_af6hy"), ExtResource("4_vvhxa"), ExtResource("5_ekkxt"), ExtResource("6_waisl")])
 
@@ -52,7 +54,7 @@ hit_flash_duration = 0.3
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]
-shape = SubResource("ConvexPolygonShape2D_tsylp")
+shape = SubResource("ConvexPolygonShape2D_ekkxt")
 
 [node name="Wrapped" type="Node" parent="." unique_id=1657980441]
 script = ExtResource("8_try08")

@@ -1,6 +1,8 @@
 class_name Asteroid
 extends CharacterBody2D
 
+signal destroyed(asteroid: Asteroid)
+
 @export var asteroid_configs: Array[AsteroidConfig]
 
 var _hp: int
@@ -13,7 +15,7 @@ var _rotation_velocity: float = 0.0
 
 
 func _ready() -> void:
-	
+
 	hurtbox.hit.connect(take_hit)
 
 	var config: AsteroidConfig = asteroid_configs.pick_random()
@@ -33,7 +35,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	rotation += _rotation_velocity * delta
-	
+
 	move_and_slide()
 
 
@@ -42,4 +44,9 @@ func take_hit(damage: int, _source: Node) -> void:
 	sprite.flash()
 	sprite.cracks()
 	if _hp <= 0:
-		queue_free()
+		_destroy()
+
+
+func _destroy() -> void:
+	destroyed.emit(self)
+	queue_free()

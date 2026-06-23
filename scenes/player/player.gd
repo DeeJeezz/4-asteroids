@@ -18,7 +18,6 @@ var _target_torque: float = 0
 
 func _ready() -> void:
 	hurtbox.hit.connect(take_hit)
-	collision_polygon.set_deferred("disabled", true)
 
 
 func _process(_delta: float) -> void:

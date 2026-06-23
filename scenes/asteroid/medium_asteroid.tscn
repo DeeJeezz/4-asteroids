@@ -18,7 +18,7 @@ shader_parameter/use_hit_flash = false
 shader_parameter/use_iframes_flash = false
 shader_parameter/crack_color = Color(0.3973318, 0, 0.0056484086, 1)
 shader_parameter/crack_amount = 0.0
-shader_parameter/crack_scale = 12.000000475
+shader_parameter/crack_scale = 32.000001425
 shader_parameter/crack_thickness = 0.0250000011875
 shader_parameter/crack_opacity = 1.0
 shader_parameter/crack_pixel_snap = 16.0
@@ -29,12 +29,14 @@ shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
 shader_parameter/iframes_speed = 12.0000001788144
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_85bag"]
-points = PackedVector2Array(-1, -19, 9, -26, 24, -21, 23, 0, 13, 16, -2, 27, -14, 23, -19, 18, -16, 8, -23, -5, -24, -22, -15, -24, -7, -20)
+points = PackedVector2Array(0, -19, 9, -26, 24, -21, 23, 0, 13, 16, -2, 27, -14, 23, -19, 18, -16, 5, -23, -5, -24, -22, -15, -24, -7, -20)
 
 [node name="MediumAsteroid" type="CharacterBody2D" unique_id=1666082907]
 collision_layer = 2
+collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
+platform_floor_layers = 4294901760
 script = ExtResource("1_laca6")
 asteroid_configs = Array[ExtResource("2_3w2re")]([ExtResource("3_7heol"), ExtResource("4_7heol"), ExtResource("5_7heol")])
 
@@ -50,7 +52,7 @@ shape = SubResource("ConvexPolygonShape2D_85bag")
 
 [node name="Wrapped" type="Node" parent="." unique_id=1657980441]
 script = ExtResource("7_glrq7")
-wrap_margin = 128.0
+wrap_margin = 96.0
 metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=329576549]

@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://ey7ojoq6wh76"]
+
+[ext_resource type="Script" uid="uid://cgm7ufofxqgsv" path="res://scenes/warp/warp.gd" id="1_rlemb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4xuyx"]
+radius = 24.0
+
+[sub_resource type="Gradient" id="Gradient_rlemb"]
+offsets = PackedFloat32Array(0, 0.42798913, 0.6589674)
+colors = PackedColorArray(1, 0.2510543, 0.49653637, 1, 0.48613495, 0.0018500498, 0.7168442, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xuyx"]
+gradient = SubResource("Gradient_rlemb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_rlemb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:gradient:offsets")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedFloat32Array(0, 0.42798913, 0.6589674)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [24.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uxq0p"]
+resource_name = "default"
+length = 0.4
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture:gradient:offsets")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1.1486982, 1.0000001, 1.5157194),
+"update": 0,
+"values": [PackedFloat32Array(0, 0.42798913, 0.6589674), PackedFloat32Array(0.11277174, 0.42798913, 0.6589674), PackedFloat32Array(0.2459239, 0.42798913, 0.6589674)]
+}
+
+[sub_resource type="Animation" id="Animation_m4gl0"]
+resource_name = "warp"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:shape:radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [24.0, 26.0, 0.01]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m4gl0"]
+_data = {
+&"RESET": SubResource("Animation_rlemb"),
+&"pulse": SubResource("Animation_uxq0p"),
+&"warp": SubResource("Animation_m4gl0")
+}
+
+[node name="Warp" type="Area2D" unique_id=538909338]
+collision_layer = 0
+monitorable = false
+script = ExtResource("1_rlemb")
+metadata/_custom_type_script = "uid://cgm7ufofxqgsv"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396148086]
+shape = SubResource("CircleShape2D_4xuyx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=675294393]
+texture = SubResource("GradientTexture2D_4xuyx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=754529760]
+libraries/ = SubResource("AnimationLibrary_m4gl0")
+autoplay = &"pulse"

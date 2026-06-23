@@ -1,16 +1,15 @@
 class_name World
 extends Node2D
 
-@onready var entities: Node2D = $Entities
-@onready var entity_spawner: EntitySpawner = $EntitySpawner
-
 @export_group("Wave generation settings")
 @export var max_asteroids: int = 5
 @export_group("Player spawn settings")
 @export var screen_border_offset: float = 100.0
 
-
 var _current_asteroids: int = 0
+
+@onready var entities: Node2D = $Entities
+@onready var entity_spawner: EntitySpawner = $EntitySpawner
 
 
 func _ready() -> void:
@@ -33,10 +32,20 @@ func generate_wave() -> void:
 			randf_range(0, GameController.SCREEN_SIZE.x),
 			randf_range(0, GameController.SCREEN_SIZE.y),
 		)
-		entities.add_child(asteroid)
+		asteroid.destroyed.connect(_on_asteroid_destroyed)
+		entities.call_deferred("add_child", asteroid)
 	for child in entities.get_children():
 		if child is Asteroid:
 			_current_asteroids += 1
+	print_debug("Generated new wave of asteroids")
+
+
+func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
+	_current_asteroids -= 1
+	print_debug("Destroyed asteroid ", asteroid)
+	if _current_asteroids < max_asteroids:
+	#if _current_asteroids < ceili(max_asteroids * 0.25):
+		generate_wave()
 
 
 func _connect_signals() -> void:

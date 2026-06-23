@@ -19,7 +19,7 @@ shader_parameter/use_hit_flash = false
 shader_parameter/use_iframes_flash = false
 shader_parameter/crack_color = Color(0.3973318, 0, 0.0056484086, 1)
 shader_parameter/crack_amount = 0.0
-shader_parameter/crack_scale = 12.000000475
+shader_parameter/crack_scale = 72.000003325
 shader_parameter/crack_thickness = 0.0250000011875
 shader_parameter/crack_opacity = 1.0
 shader_parameter/crack_pixel_snap = 16.0
@@ -34,8 +34,10 @@ points = PackedVector2Array(1, 13, -8, 10, -12, 4, -10, -1, -9, -9, -5, -13, 7, 
 
 [node name="SmallAsteroid" type="CharacterBody2D" unique_id=1666082907]
 collision_layer = 2
+collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
+platform_floor_layers = 4294901760
 script = ExtResource("1_0ip10")
 asteroid_configs = Array[ExtResource("2_t3mwc")]([ExtResource("3_0ip10"), ExtResource("4_t3mwc"), ExtResource("5_i1qec"), ExtResource("6_lhqmj")])
 
@@ -51,7 +53,7 @@ shape = SubResource("ConvexPolygonShape2D_85bag")
 
 [node name="Wrapped" type="Node" parent="." unique_id=1657980441]
 script = ExtResource("10_17pdv")
-wrap_margin = 128.0
+wrap_margin = 64.0
 metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=329576549]

@@ -76,8 +76,12 @@ func spawn_warp() -> void:
 		randf_range(warp_screen_border_offset, GameController.SCREEN_SIZE.x - warp_screen_border_offset),
 		randf_range(warp_screen_border_offset, GameController.SCREEN_SIZE.y - warp_screen_border_offset),
 	)
+	# Move warp below all other entities.
 	entities.add_child(warp)
 	entities.move_child(warp, 0)
+	# Connect warp signals.
+	warp.warped.connect(_start_warp_spawn_timer)
+	warp.destroyed.connect(_start_warp_spawn_timer)
 	print_debug("Generated warp")
 
 

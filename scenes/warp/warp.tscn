@@ -58,6 +58,22 @@ tracks/0/keys = {
 "values": [PackedFloat32Array(0, 0.42798913, 0.6589674), PackedFloat32Array(0.11277174, 0.42798913, 0.6589674), PackedFloat32Array(0.2459239, 0.42798913, 0.6589674)]
 }
 
+[sub_resource type="Animation" id="Animation_1yck1"]
+resource_name = "spawn"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_m4gl0"]
 resource_name = "warp"
 length = 0.6
@@ -78,6 +94,7 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_rlemb"),
 &"pulse": SubResource("Animation_uxq0p"),
+&"spawn": SubResource("Animation_1yck1"),
 &"warp": SubResource("Animation_m4gl0")
 }
 
@@ -87,6 +104,7 @@ monitorable = false
 script = ExtResource("1_rlemb")
 drag_force = 22.5
 warp_area_radius = 20.0
+ttl = 5.0
 metadata/_custom_type_script = "uid://cgm7ufofxqgsv"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396148086]
@@ -97,4 +115,7 @@ texture = SubResource("GradientTexture2D_4xuyx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=754529760]
 libraries/ = SubResource("AnimationLibrary_m4gl0")
-autoplay = &"pulse"
+autoplay = &"spawn"
+
+[node name="TTLTimer" type="Timer" parent="." unique_id=1031916306]
+one_shot = true

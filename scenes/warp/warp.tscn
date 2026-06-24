@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cgm7ufofxqgsv" path="res://scenes/warp/warp.gd" id="1_rlemb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xuyx"]
-radius = 24.0
+radius = 56.0
 
 [sub_resource type="Gradient" id="Gradient_rlemb"]
 offsets = PackedFloat32Array(0, 0.42798913, 0.6589674)
@@ -31,22 +31,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:shape:radius")
+tracks/1/path = NodePath("Sprite2D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [24.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -76,22 +64,10 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape2D:shape:radius")
+tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.6),
-"transitions": PackedFloat32Array(1, 2, 1),
-"update": 0,
-"values": [24.0, 26.0, 0.01]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.6),
 "transitions": PackedFloat32Array(1, 2, 1),
 "update": 0,
@@ -109,6 +85,8 @@ _data = {
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_rlemb")
+drag_force = 22.5
+warp_area_radius = 20.0
 metadata/_custom_type_script = "uid://cgm7ufofxqgsv"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396148086]

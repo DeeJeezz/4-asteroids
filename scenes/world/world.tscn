@@ -8,22 +8,30 @@
 [ext_resource type="PackedScene" uid="uid://1b4b5yqhsn7j" path="res://scenes/asteroid/small_asteroid.tscn" id="5_t5ptc"]
 [ext_resource type="PackedScene" uid="uid://ey7ojoq6wh76" path="res://scenes/warp/warp.tscn" id="7_bq33v"]
 
-[node name="World" type="Node2D" unique_id=1713281119]
+[node name="World" type="Node2D" unique_id=1713281119 node_paths=PackedStringArray("warp_spawn_timer")]
 script = ExtResource("1_dphjl")
+max_asteroids_per_wave = 8
+new_asteroids_wave_threshold = 0.3
+min_warp_spawn_time = 5.0
+max_warp_spawn_time = 15.0
+warp_spawn_timer = NodePath("Timers/WarpSpawnTimer")
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1826386014]
 
 [node name="Entities" type="Node2D" parent="." unique_id=1617050387]
 
-[node name="Warp" parent="Entities" unique_id=538909338 instance=ExtResource("7_bq33v")]
-position = Vector2(319, 151)
-drag_force = 100.0
-warp_area_radius = 20.0
+[node name="Timers" type="Node2D" parent="." unique_id=1894135588]
+
+[node name="WarpSpawnTimer" type="Timer" parent="Timers" unique_id=1514238878]
+autostart = true
 
 [node name="EntitySpawner" type="Node" parent="." unique_id=1003307011]
 script = ExtResource("3_1fp7r")
 big_asteroid_scene = ExtResource("3_v5dby")
+big_asteroid_probability = 0.2
 medium_asteroid_scene = ExtResource("4_t5ptc")
+medium_asteroid_probability = 0.2
 small_asteroid_scene = ExtResource("5_t5ptc")
 player_scene = ExtResource("2_sl2e5")
+warp_scene = ExtResource("7_bq33v")
 metadata/_custom_type_script = "uid://cgumvidsxp40b"

@@ -17,7 +17,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if _entered_object and not _warping:
+	if _entered_object:
 		_drag_to_center(_entered_object, delta)
 
 

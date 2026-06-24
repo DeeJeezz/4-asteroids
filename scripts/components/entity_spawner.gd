@@ -13,6 +13,8 @@ extends Node
 @export_range(0.0, 1.0, 0.05) var small_asteroid_probability: float = 0.25
 @export_category("Player")
 @export var player_scene: PackedScene
+@export_category("Warp")
+@export var warp_scene: PackedScene
 
 var _asteroid_scenes: Array[PackedScene]
 
@@ -22,8 +24,7 @@ func _ready() -> void:
 
 
 func create_player() -> Player:
-	var player: Player = player_scene.instantiate()
-	return player
+	return player_scene.instantiate()
 
 
 func create_wave(max_asteroids: int) -> Array[Asteroid]:
@@ -38,3 +39,7 @@ func create_wave(max_asteroids: int) -> Array[Asteroid]:
 			asteroid = small_asteroid_scene.instantiate()
 		asteroids.append(asteroid)
 	return asteroids
+
+
+func create_warp() -> Warp:
+	return warp_scene.instantiate()

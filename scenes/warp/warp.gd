@@ -44,14 +44,17 @@ func _drag_to_center(body: Node2D, delta: float) -> void:
 
 func _warp(body: Node2D) -> void:
 	_warping = true
+	ttl_timer.stop()
 	body.reparent(sprite)
-	body_entered.disconnect(_on_body_entered)
+	if body_entered.is_connected(_on_body_entered):
+		body_entered.disconnect(_on_body_entered)
 	animation_player.play(&"warp")
 	animation_player.animation_finished.connect(_on_warp_finished)
 
 
 func _end_of_life() -> void:
-	body_entered.disconnect(_on_body_entered)
+	if body_entered.is_connected(_on_body_entered):
+		body_entered.disconnect(_on_body_entered)
 	animation_player.play(&"warp")
 	animation_player.animation_finished.connect(_on_end_of_life)
 

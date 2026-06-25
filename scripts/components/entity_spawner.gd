@@ -16,15 +16,22 @@ extends Node
 @export_category("Warp")
 @export var warp_scene: PackedScene
 
-var _asteroid_scenes: Array[PackedScene]
+var _big_asteroid_prefab: Asteroid
+var _medium_asteroid_prefab: Asteroid
+var _small_asteroid_prefab: Asteroid
+var _player_prefab: Player
+var _warp_prefab: Warp
 
 
 func _ready() -> void:
-	_asteroid_scenes = [big_asteroid_scene, medium_asteroid_scene, small_asteroid_scene]
+	_preload_prefabs()
 
 
 func create_player() -> Player:
-	return player_scene.instantiate()
+	var player: Player = _player_prefab.duplicate()
+	player.process_mode = Node.PROCESS_MODE_INHERIT
+	player.visible = true
+	return player
 
 
 func create_wave(max_asteroids: int) -> Array[Asteroid]:
@@ -32,14 +39,46 @@ func create_wave(max_asteroids: int) -> Array[Asteroid]:
 	for _i in range(max_asteroids):
 		var asteroid: Asteroid
 		if randf() < big_asteroid_probability:
-			asteroid = big_asteroid_scene.instantiate()
+			asteroid = _big_asteroid_prefab.duplicate()
 		elif randf() > big_asteroid_probability and randf() < big_asteroid_probability + medium_asteroid_probability:
-			asteroid = medium_asteroid_scene.instantiate()
+			asteroid = _medium_asteroid_prefab.duplicate()
 		else:
-			asteroid = small_asteroid_scene.instantiate()
+			asteroid = _small_asteroid_prefab.duplicate()
+		asteroid.process_mode = Node.PROCESS_MODE_INHERIT
+		asteroid.visible = true
 		asteroids.append(asteroid)
 	return asteroids
 
 
 func create_warp() -> Warp:
-	return warp_scene.instantiate()
+	var warp: Warp = _warp_prefab.duplicate()
+	warp.process_mode = Node.PROCESS_MODE_INHERIT
+	warp.visible = true
+	return warp
+
+
+func _preload_prefabs() -> void:
+	_big_asteroid_prefab = big_asteroid_scene.instantiate()
+	_big_asteroid_prefab.process_mode = Node.PROCESS_MODE_DISABLED
+	_big_asteroid_prefab.visible = false
+	add_child(_big_asteroid_prefab)
+
+	_medium_asteroid_prefab = medium_asteroid_scene.instantiate()
+	_medium_asteroid_prefab.process_mode = Node.PROCESS_MODE_DISABLED
+	_medium_asteroid_prefab.visible = false
+	add_child(_medium_asteroid_prefab)
+
+	_small_asteroid_prefab = small_asteroid_scene.instantiate()
+	_small_asteroid_prefab.process_mode = Node.PROCESS_MODE_DISABLED
+	_small_asteroid_prefab.visible = false
+	add_child(_small_asteroid_prefab)
+
+	_player_prefab = player_scene.instantiate()
+	_player_prefab.process_mode = Node.PROCESS_MODE_DISABLED
+	_player_prefab.visible = false
+	add_child(_player_prefab)
+
+	_warp_prefab = warp_scene.instantiate()
+	_warp_prefab.process_mode = Node.PROCESS_MODE_DISABLED
+	_warp_prefab.visible = false
+	add_child(_warp_prefab)

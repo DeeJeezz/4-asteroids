@@ -64,6 +64,7 @@ func generate_wave() -> void:
 			randf_range(min_wave_spawn_screen_offset.x, max_wave_spawn_screen_offset.x),
 			randf_range(min_wave_spawn_screen_offset.y, max_wave_spawn_screen_offset.y),
 		)
+		await get_tree().physics_frame
 		asteroid.destroyed.connect(_on_asteroid_destroyed)
 		entities.call_deferred("add_child", asteroid)
 		_current_asteroids += 1

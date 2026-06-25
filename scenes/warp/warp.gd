@@ -7,6 +7,8 @@ signal destroyed
 @export var drag_force: float = 50.0
 @export var warp_area_radius: float = 15.0
 @export var ttl: float = 20.0
+@export var min_warp_distance: float = 300.0
+@export var max_warp_distance: float = 500.0
 
 var _entered_object: Node2D
 var _warping: bool = false
@@ -35,9 +37,13 @@ func _connect_signals() -> void:
 
 
 func _drag_to_center(body: Node2D, delta: float) -> void:
-	body.global_position = body.global_position.move_toward(global_position, drag_force * delta)
+	var body_distance_to_center: float = (body.global_position - global_position).length()
+	if body.global_position != global_position:
+		body.global_position = body.global_position.move_toward(
+			global_position,
+			drag_force * delta,
+		)
 	if not _warping:
-		var body_distance_to_center: float = (body.global_position - global_position).length()
 		if body_distance_to_center < warp_area_radius:
 			_warp(body)
 
@@ -65,9 +71,30 @@ func _on_end_of_life(_anim_name: StringName) -> void:
 
 
 func _on_warp_finished(_anim_name: StringName) -> void:
-	Signals.player_respawn_requested.emit()
-	warped.emit()
+	if _entered_object is CharacterBody2D:
+		var warp_position: Vector2 = _get_random_warp_position(min_warp_distance, max_warp_distance)
+		Signals.player_respawn_requested.emit(warp_position, _entered_object.rotation, _entered_object.velocity)
+		warped.emit()
 	queue_free()
+
+
+func _get_random_warp_position(
+	min_distance: float,
+	max_distance: float
+) -> Vector2:
+	var viewport_rect := get_viewport_rect()
+
+	for i in 100:
+		var angle := randf_range(0.0, TAU)
+		var distance := randf_range(min_distance, max_distance)
+
+		var point := position + Vector2.RIGHT.rotated(angle) * distance
+
+		if viewport_rect.has_point(point):
+			return point
+
+	# fallback, если за 100 попыток ничего не нашли
+	return viewport_rect.get_center()
 
 
 func _on_body_entered(body: Node2D) -> void:

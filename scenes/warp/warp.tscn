@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cgm7ufofxqgsv" path="res://scenes/warp/warp.gd" id="1_rlemb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4xuyx"]
-radius = 56.0
+radius = 40.0
 
 [sub_resource type="Gradient" id="Gradient_rlemb"]
 offsets = PackedFloat32Array(0, 0.42798913, 0.6589674)
@@ -102,9 +102,9 @@ _data = {
 collision_layer = 0
 monitorable = false
 script = ExtResource("1_rlemb")
-drag_force = 22.5
+drag_force = 20.0
 warp_area_radius = 20.0
-ttl = 5.0
+ttl = 15.0
 metadata/_custom_type_script = "uid://cgm7ufofxqgsv"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=396148086]

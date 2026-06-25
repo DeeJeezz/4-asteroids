@@ -23,7 +23,7 @@ warp_spawn_timer = NodePath("Timers/WarpSpawnTimer")
 [node name="Timers" type="Node2D" parent="." unique_id=1894135588]
 
 [node name="WarpSpawnTimer" type="Timer" parent="Timers" unique_id=1514238878]
-autostart = true
+one_shot = true
 
 [node name="EntitySpawner" type="Node" parent="." unique_id=1003307011]
 script = ExtResource("3_1fp7r")

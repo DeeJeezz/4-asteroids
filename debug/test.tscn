@@ -10,7 +10,8 @@
 
 [node name="Warp" parent="." unique_id=538909338 instance=ExtResource("6_sa7xw")]
 position = Vector2(143, 240)
-drag_force = 17.5
+drag_force = 50.0
+warp_area_radius = 25.0
 
 [node name="Player" parent="." unique_id=1469936958 instance=ExtResource("1_bdhpj")]
 position = Vector2(208, 247)

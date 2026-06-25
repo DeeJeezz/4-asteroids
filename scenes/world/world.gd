@@ -45,12 +45,23 @@ func _ready() -> void:
 
 ## Generate player node. Places at random [member Player.position].[br]
 ## Max and min position controlled by [param World.player_screen_border_offset].
-func spawn_player() -> void:
+func spawn_player(desired_position: Vector2, desired_rotation: float, desired_velocity: Vector2) -> void:
 	var player: Player = entity_spawner.create_player()
-	player.position = Vector2(
-		randf_range(player_screen_border_offset, GameController.SCREEN_SIZE.x - player_screen_border_offset),
-		randf_range(player_screen_border_offset, GameController.SCREEN_SIZE.y - player_screen_border_offset),
-	)
+	if desired_position != Vector2.ZERO:
+		player.position = desired_position
+	else:
+		player.position = Vector2(
+			randf_range(player_screen_border_offset, GameController.SCREEN_SIZE.x - player_screen_border_offset),
+			randf_range(player_screen_border_offset, GameController.SCREEN_SIZE.y - player_screen_border_offset),
+		)
+	
+	if desired_rotation != 0:
+		player.rotation = desired_rotation
+	else:
+		player.rotation = randf_range(0.0, TAU)
+		
+	if desired_velocity != Vector2.ZERO:
+		player.velocity = desired_velocity
 	entities.add_child(player)
 
 

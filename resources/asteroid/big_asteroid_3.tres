@@ -2,6 +2,9 @@
 
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_rrbem"]
 [ext_resource type="Texture2D" uid="uid://ddj1qrg17j5d" path="res://resources/atlases/asteroids/big_asteroid_atlas_3.tres" id="2_evq8m"]
+[ext_resource type="Resource" uid="uid://cfdkordoyt28m" path="res://resources/asteroid/medium_asteroid_1.tres" id="2_fu6pf"]
+[ext_resource type="Resource" uid="uid://bdu88sumgb0ty" path="res://resources/asteroid/medium_asteroid_2.tres" id="3_o5xgq"]
+[ext_resource type="Resource" uid="uid://b254prbwjt6p6" path="res://resources/asteroid/medium_asteroid_3.tres" id="4_5uxrg"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rtkd0"]
 points = PackedVector2Array(-16, -24, -11, -36, 2, -52, 28, -51, 50, -46, 49, -22, 49, -11, 49, 1, 55, 19, 16, 49, -10, 52, -55, 52, -48, 19, -49, -6, -38, -21)
@@ -10,9 +13,10 @@ points = PackedVector2Array(-16, -24, -11, -36, 2, -52, 28, -51, 50, -46, 49, -2
 script = ExtResource("1_rrbem")
 texture = ExtResource("2_evq8m")
 collision_shape = SubResource("ConvexPolygonShape2D_rtkd0")
-hp = 8
+hp = 13
 min_speed = 25.0
 max_speed = 50.0
 min_rotation_speed = -1.0
 max_rotation_speed = 1.0
+split_into_variants = Array[ExtResource("1_rrbem")]([ExtResource("2_fu6pf"), ExtResource("3_o5xgq"), ExtResource("4_5uxrg")])
 metadata/_custom_type_script = "uid://blmr3mmee6fnm"

@@ -1,19 +1,14 @@
 [gd_scene format=3 uid="uid://blpstx4vgrd1h"]
 
-[ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_j1t37"]
-[ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="2_tyfid"]
-[ext_resource type="Resource" uid="uid://drj3if4bfibcv" path="res://resources/asteroid/big_asteroid_1.tres" id="4_af6hy"]
-[ext_resource type="Resource" uid="uid://dtm0hnn8xh4hm" path="res://resources/asteroid/big_asteroid_2.tres" id="4_vvhxa"]
-[ext_resource type="Resource" uid="uid://c0tfxx14vtuf3" path="res://resources/asteroid/big_asteroid_3.tres" id="5_ekkxt"]
-[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="5_tsylp"]
-[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="6_tyfid"]
-[ext_resource type="Resource" uid="uid://y6l31q2piigp" path="res://resources/asteroid/big_asteroid_4.tres" id="6_waisl"]
-[ext_resource type="Texture2D" uid="uid://cfskyrmr1l8mi" path="res://assets/img/asteroids/PixelStarshipsPackage_Asteroids_01.png" id="8_8wc3i"]
-[ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="8_try08"]
-[ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="9_4tung"]
+[ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_ctvhk"]
+[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="7_5svfo"]
+[ext_resource type="Texture2D" uid="uid://cfskyrmr1l8mi" path="res://assets/img/asteroids/PixelStarshipsPackage_Asteroids_01.png" id="8_lsgqe"]
+[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="9_otu8h"]
+[ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="10_d6s71"]
+[ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="11_efgms"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_suqjk"]
-shader = ExtResource("5_tsylp")
+shader = ExtResource("7_5svfo")
 shader_parameter/use_cracks = true
 shader_parameter/use_hit_flash = false
 shader_parameter/use_iframes_flash = false
@@ -30,26 +25,25 @@ shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
 shader_parameter/iframes_speed = 12.0000001788144
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tp4vn"]
-atlas = ExtResource("8_8wc3i")
+atlas = ExtResource("8_lsgqe")
 region = Rect2(19, 142, 100, 102)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ekkxt"]
 points = PackedVector2Array(-47, -20, -28, -29, -20, -49, 25, -49, 48, -18, 40, -4, 50, 27, 45, 44, 8, 32, -8, 50, -42, 44, -47, 31, -37, 17, -49, -7)
 
-[node name="BigAsteroid" type="CharacterBody2D" unique_id=1666082907]
+[node name="Asteroid" type="CharacterBody2D" unique_id=1666082907]
 collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4294901760
-script = ExtResource("1_j1t37")
-asteroid_configs = Array[ExtResource("2_tyfid")]([ExtResource("4_af6hy"), ExtResource("4_vvhxa"), ExtResource("5_ekkxt"), ExtResource("6_waisl")])
+script = ExtResource("1_ctvhk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
 material = SubResource("ShaderMaterial_suqjk")
 texture = SubResource("AtlasTexture_tp4vn")
 region_rect = Rect2(273, 12, 100, 107)
-script = ExtResource("6_tyfid")
+script = ExtResource("9_otu8h")
 hit_flash_duration = 0.3
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
@@ -57,14 +51,14 @@ metadata/_custom_type_script = "uid://dguveqsuf868b"
 shape = SubResource("ConvexPolygonShape2D_ekkxt")
 
 [node name="Wrapped" type="Node" parent="." unique_id=1657980441]
-script = ExtResource("8_try08")
+script = ExtResource("10_d6s71")
 wrap_margin = 128.0
 metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=329576549]
 collision_layer = 256
 collision_mask = 512
-script = ExtResource("9_4tung")
+script = ExtResource("11_efgms")
 metadata/_custom_type_script = "uid://bkpfvxigulyku"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=508357110]

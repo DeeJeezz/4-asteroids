@@ -63,23 +63,42 @@ func spawn_player(desired_position: Vector2, desired_rotation: float, desired_ve
 	if desired_velocity != Vector2.ZERO:
 		player.velocity = desired_velocity
 	entities.add_child(player)
+	entities.move_child(player, 0)
 
 
 ## Generates wave of asteroids.[br]
 ## Asteroids spawn position controlled by [param World.min_wave_spawn_screen_offset] 
 ## and [param World.max_wave_spawn_screen_offset].
 func generate_wave() -> void:
-	var asteroids: Array[Asteroid] = entity_spawner.create_wave(max_asteroids_per_wave - _current_asteroids)
+	var big_asteroids: int = 0
+	var medium_asteroids: int = 0
+	var small_asteroids: int = 0
+	for _i in range(max_asteroids_per_wave):
+		var prob: float = randf()
+		if prob < 0.2:
+			big_asteroids += 1
+		elif prob >= 0.2 and prob < 0.4:
+			medium_asteroids += 1
+		else:
+			small_asteroids += 1
+	var asteroids: Array[Asteroid] = entity_spawner.generate_asteroids_wave(
+		big_asteroids, 
+		medium_asteroids,
+		small_asteroids,
+	)
 	for asteroid: Asteroid in asteroids:
 		asteroid.position = Vector2(
 			randf_range(min_wave_spawn_screen_offset.x, max_wave_spawn_screen_offset.x),
 			randf_range(min_wave_spawn_screen_offset.y, max_wave_spawn_screen_offset.y),
 		)
-		await get_tree().physics_frame
 		asteroid.destroyed.connect(_on_asteroid_destroyed)
+		asteroid.split.connect(_on_asteroid_split)
 		entities.call_deferred("add_child", asteroid)
 		_current_asteroids += 1
-	print_debug("Generated new wave of asteroids")
+	print_debug(
+		"Generated new wave of asteroids. Big: %d; Medium: %d; Small: %d."
+		% [big_asteroids, medium_asteroids, small_asteroids],
+	)
 
 
 func spawn_warp() -> void:
@@ -104,6 +123,14 @@ func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
 	print_debug("Destroyed asteroid ", asteroid)
 	if _current_asteroids < ceili(max_asteroids_per_wave * new_asteroids_wave_threshold):
 		generate_wave()
+		
+
+# TBD
+# Processing asteroid split.
+func _on_asteroid_split(asteroid: Asteroid) -> void:
+	_current_asteroids -= 1
+	print_debug("Split asteroid", asteroid)
+	
 
 
 func _start_warp_spawn_timer() -> void:

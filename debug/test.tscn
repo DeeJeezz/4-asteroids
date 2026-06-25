@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://ciin25b4anaei"]
 
 [ext_resource type="PackedScene" uid="uid://jyt05nciv3am" path="res://scenes/player/player.tscn" id="1_bdhpj"]
-[ext_resource type="PackedScene" uid="uid://blpstx4vgrd1h" path="res://scenes/asteroid/big_asteroid.tscn" id="2_3hy8g"]
-[ext_resource type="PackedScene" uid="uid://cppqdq3tcg5dt" path="res://scenes/asteroid/medium_asteroid.tscn" id="4_08xoe"]
-[ext_resource type="PackedScene" uid="uid://1b4b5yqhsn7j" path="res://scenes/asteroid/small_asteroid.tscn" id="5_xow25"]
+[ext_resource type="PackedScene" uid="uid://blpstx4vgrd1h" path="res://scenes/asteroid/asteroid.tscn" id="2_3hy8g"]
+[ext_resource type="PackedScene" path="res://scenes/asteroid/medium_asteroid.tscn" id="4_08xoe"]
+[ext_resource type="PackedScene" path="res://scenes/asteroid/small_asteroid.tscn" id="5_xow25"]
 [ext_resource type="PackedScene" uid="uid://ey7ojoq6wh76" path="res://scenes/warp/warp.tscn" id="6_sa7xw"]
 
 [node name="Test" type="Node2D" unique_id=32416756]

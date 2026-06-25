@@ -26,6 +26,15 @@ shader_parameter/hit_flash_amount = 0.0
 shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
 shader_parameter/iframes_speed = 16.0
 
+[sub_resource type="Gradient" id="Gradient_qek5x"]
+offsets = PackedFloat32Array(0, 0.73777175)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4xuyx"]
+gradient = SubResource("Gradient_qek5x")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D" unique_id=1087837171]
 collision_mask = 0
 motion_mode = 1
@@ -73,3 +82,7 @@ rotation = 1.5707964
 [node name="Wrapped" type="Node" parent="." unique_id=807411937]
 script = ExtResource("2_dovo2")
 metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1352732066]
+energy = 0.4
+texture = SubResource("GradientTexture2D_4xuyx")

@@ -2,10 +2,25 @@
 
 [ext_resource type="Script" uid="uid://bpetnakgkqf7v" path="res://scenes/bullet/bullet.gd" id="1_7c8un"]
 [ext_resource type="Script" uid="uid://c5gljbrgj0762" path="res://scripts/components/destroy_off_screen.gd" id="2_83itf"]
-[ext_resource type="Texture2D" uid="uid://jucjbv51pjy4" path="res://resources/bullet/bullet.tres" id="2_c6pnf"]
+[ext_resource type="Texture2D" uid="uid://dehc4kuqpmror" path="res://assets/img/bullet/plasma_1.png" id="3_0vdx3"]
+[ext_resource type="Texture2D" uid="uid://b1b2s0kf7rubi" path="res://assets/img/bullet/plasma_2.png" id="4_8g26r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7c8un"]
 size = Vector2(2, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvja3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0vdx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8g26r")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="Gradient" id="Gradient_c6pnf"]
 offsets = PackedFloat32Array(0, 0.6970109)
@@ -25,13 +40,13 @@ script = ExtResource("1_7c8un")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=50091433]
 shape = SubResource("RectangleShape2D_7c8un")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1981394353]
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("2_c6pnf")
-
 [node name="DestroyOffScreen" type="Node2D" parent="." unique_id=1359494623]
 script = ExtResource("2_83itf")
 metadata/_custom_type_script = "uid://c5gljbrgj0762"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1579516082]
+sprite_frames = SubResource("SpriteFrames_qvja3")
+autoplay = "default"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=414701774]
 texture = SubResource("GradientTexture2D_0vdx3")

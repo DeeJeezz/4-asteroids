@@ -9,7 +9,7 @@ https://20_games_challenge.gitlab.io/games/asteroids/
 
 Itch.io - https://deejeezz.itch.io/asteroids
 
-Github Pages - https://deejeezz.github.io/asteroids
+Github Pages - https://deejeezz.github.io/4-asteroids
 
 ## Description
 

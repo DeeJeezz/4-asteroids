@@ -119,6 +119,7 @@ func spawn_warp() -> void:
 # Processing asteroid destruction.
 func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
 	_current_asteroids -= 1
+	Signals.add_score_requested.emit(asteroid.current_config.score)
 	prints("Current asteroids", _current_asteroids)
 	print_debug("Destroyed asteroid ", asteroid)
 	if _current_asteroids < ceili(max_asteroids_per_wave * new_asteroids_wave_threshold):
@@ -128,6 +129,7 @@ func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
 # Processing asteroid split.
 func _on_asteroid_split(asteroid: Asteroid) -> void:
 	_current_asteroids -= 1
+	Signals.add_score_requested.emit(asteroid.current_config.score)
 	for _i in range(randi_range(asteroid.current_config.min_split, asteroid.current_config.max_split)):
 		var spawned_asteroid: Asteroid = entity_spawner.asteroid_spawner.spawn_asteroid_from_config(
 			asteroid.current_config.split_into_variants.pick_random(),

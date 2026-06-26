@@ -17,7 +17,7 @@ var _target_torque: float = 0
 
 
 func _ready() -> void:
-	hurtbox.hit.connect(take_hit)
+	_connect_signals()
 
 
 func _process(_delta: float) -> void:
@@ -39,6 +39,16 @@ func _physics_process(delta: float) -> void:
 
 func take_hit(_damage: int, _source: Node) -> void:
 	sprite.flash()
+	Signals.player_hit.emit()
+
+
+func _connect_signals() -> void:
+	hurtbox.hit.connect(take_hit)
+	Signals.player_death_requested.connect(_on_player_death_requested)
+
+
+func _on_player_death_requested() -> void:
+	queue_free()
 
 
 func _handle_input() -> void:

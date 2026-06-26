@@ -11,6 +11,7 @@ extends Resource
 @export_category("Behaviour settings")
 @export var hp: int
 @export_range(0.0, 360.0) var wrap_margin: float
+@export var score: int
 @export_category("Physics settings")
 @export var min_speed: float = 50.0
 @export var max_speed: float = 150.0

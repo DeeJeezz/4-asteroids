@@ -17,6 +17,7 @@ collision_shape = SubResource("ConvexPolygonShape2D_rtkd0")
 sprite_material = ExtResource("2_14bmk")
 hp = 13
 wrap_margin = 100.0
+score = 150
 min_speed = 25.0
 max_speed = 50.0
 min_rotation_speed = -1.0

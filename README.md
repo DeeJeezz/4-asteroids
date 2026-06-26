@@ -1,10 +1,15 @@
 # Asteroids
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/deejeezz/4-asteroids/deploy.yaml)
+![GitHub Tag](https://img.shields.io/github/v/tag/deejeezz/4-asteroids)
+
 https://20_games_challenge.gitlab.io/games/asteroids/
 
 ## Where to play
 
-TBD
+Itch.io - https://deejeezz.itch.io/asteroids
+
+Github Pages - https://deejeezz.github.io/asteroids
 
 ## Description
 

@@ -1,8 +1,11 @@
 [gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://dtm0hnn8xh4hm"]
 
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_hxcca"]
+[ext_resource type="Resource" uid="uid://cfdkordoyt28m" path="res://resources/asteroid/medium_asteroid_1.tres" id="2_c5qm8"]
 [ext_resource type="Material" uid="uid://jtwgu3grufeq" path="res://resources/materials/big_asteroid_sprite_material.tres" id="2_ck7a2"]
 [ext_resource type="Texture2D" uid="uid://b46xvdwlbqhrj" path="res://resources/atlases/asteroids/big_asteroid_atlas_2.tres" id="2_hhgcg"]
+[ext_resource type="Resource" uid="uid://bdu88sumgb0ty" path="res://resources/asteroid/medium_asteroid_2.tres" id="3_fr67k"]
+[ext_resource type="Resource" uid="uid://b254prbwjt6p6" path="res://resources/asteroid/medium_asteroid_3.tres" id="4_po0jp"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_t00pk"]
 points = PackedVector2Array(-29, -23, -47, -48, -24, -56, -1, -49, 29, -47, 28, -22, 9, -12, 36, 0, 53, 30, 32, 55, -9, 54, -44, 45, -27, 24, -51, 10, -49, -5)
@@ -18,4 +21,7 @@ min_speed = 25.0
 max_speed = 55.0
 min_rotation_speed = -1.25
 max_rotation_speed = 1.25
+split_into_variants = Array[ExtResource("1_hxcca")]([ExtResource("2_c5qm8"), ExtResource("3_fr67k"), ExtResource("4_po0jp")])
+min_split = 1
+max_split = 3
 metadata/_custom_type_script = "uid://blmr3mmee6fnm"

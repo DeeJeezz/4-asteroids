@@ -18,4 +18,5 @@ min_speed = 45.0
 max_speed = 60.0
 min_rotation_speed = -2.5
 max_rotation_speed = 2.5
+max_split = 0
 metadata/_custom_type_script = "uid://blmr3mmee6fnm"

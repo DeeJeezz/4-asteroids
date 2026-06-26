@@ -54,12 +54,12 @@ func spawn_player(desired_position: Vector2, desired_rotation: float, desired_ve
 			randf_range(player_screen_border_offset, GameController.SCREEN_SIZE.x - player_screen_border_offset),
 			randf_range(player_screen_border_offset, GameController.SCREEN_SIZE.y - player_screen_border_offset),
 		)
-	
+
 	if desired_rotation != 0:
 		player.rotation = desired_rotation
 	else:
 		player.rotation = randf_range(0.0, TAU)
-		
+
 	if desired_velocity != Vector2.ZERO:
 		player.velocity = desired_velocity
 	entities.add_child(player)
@@ -82,7 +82,7 @@ func generate_wave() -> void:
 		else:
 			small_asteroids += 1
 	var asteroids: Array[Asteroid] = entity_spawner.generate_asteroids_wave(
-		big_asteroids, 
+		big_asteroids,
 		medium_asteroids,
 		small_asteroids,
 	)
@@ -123,14 +123,21 @@ func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
 	print_debug("Destroyed asteroid ", asteroid)
 	if _current_asteroids < ceili(max_asteroids_per_wave * new_asteroids_wave_threshold):
 		generate_wave()
-		
 
-# TBD
+
 # Processing asteroid split.
 func _on_asteroid_split(asteroid: Asteroid) -> void:
 	_current_asteroids -= 1
+	for _i in range(randi_range(asteroid.current_config.min_split, asteroid.current_config.max_split)):
+		var spawned_asteroid: Asteroid = entity_spawner.asteroid_spawner.spawn_asteroid_from_config(
+			asteroid.current_config.split_into_variants.pick_random(),
+		)
+		spawned_asteroid.position = asteroid.position
+		spawned_asteroid.destroyed.connect(_on_asteroid_destroyed)
+		spawned_asteroid.split.connect(_on_asteroid_split)
+		entities.call_deferred("add_child", spawned_asteroid)
+		_current_asteroids += 1
 	print_debug("Split asteroid", asteroid)
-	
 
 
 func _start_warp_spawn_timer() -> void:

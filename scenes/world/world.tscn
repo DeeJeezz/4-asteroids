@@ -727,6 +727,7 @@ autoplay = "default"
 frame_progress = 0.20713712
 
 [node name="Stars" type="AnimatedSprite2D" parent="Backgrounds" unique_id=2006389570]
+modulate = Color(1, 1, 1, 0.74509805)
 position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_57reo")
 autoplay = "default"

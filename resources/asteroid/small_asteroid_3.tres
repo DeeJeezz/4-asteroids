@@ -16,4 +16,5 @@ hp = 2
 wrap_margin = 32.0
 min_speed = 40.0
 max_speed = 65.0
+max_split = 0
 metadata/_custom_type_script = "uid://blmr3mmee6fnm"

@@ -10,18 +10,18 @@ extends Node
 
 
 func spawn_big_asteroid() -> Asteroid:
-	return _spawn_asteroid(big_asteroid_variants.pick_random())
+	return spawn_asteroid_from_config(big_asteroid_variants.pick_random())
 
 
 func spawn_medium_asteroid() -> Asteroid:
-	return _spawn_asteroid(medium_asteroid_variants.pick_random())
+	return spawn_asteroid_from_config(medium_asteroid_variants.pick_random())
 
 
 func spawn_small_asteroid() -> Asteroid:
-	return _spawn_asteroid(small_asteroid_variants.pick_random())
+	return spawn_asteroid_from_config(small_asteroid_variants.pick_random())
 
 
-func _spawn_asteroid(config: AsteroidConfig) -> Asteroid:
+func spawn_asteroid_from_config(config: AsteroidConfig) -> Asteroid:
 	var asteroid: Asteroid = asteroid_scene.instantiate()
 	asteroid.setup_from_config(config)
 	return asteroid

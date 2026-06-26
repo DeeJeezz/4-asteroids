@@ -1,3 +1,4 @@
+## Manager for spawning different entities.
 class_name EntitySpawner
 extends Node
 

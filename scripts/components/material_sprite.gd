@@ -7,10 +7,6 @@ extends Sprite2D
 @export_range(0, 1, 0.05) var hit_flash_max_value: float = 1.0
 
 
-func _ready() -> void:
-	material = material.duplicate()
-
-
 func flash() -> void:
 	material.set_shader_parameter(&"use_hit_flash", true)
 	var tween: Tween = create_tween()

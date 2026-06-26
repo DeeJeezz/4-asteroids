@@ -163,8 +163,8 @@ volume_db = -10.0
 
 [node name="DamageSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=2000409052]
 stream = ExtResource("22_yj68g")
-volume_db = -20.0
+volume_db = -10.0
 
 [node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=1054201517]
 stream = ExtResource("23_ioxgp")
-volume_db = -20.0
+volume_db = -10.0

@@ -1,0 +1,20 @@
+[gd_resource type="Theme" format=3 uid="uid://c43xwlxorrpj4"]
+
+[ext_resource type="FontFile" uid="uid://dg8md0djoafjs" path="res://assets/fonts/OptionC_UpheavalPro.otf" id="1_uc1im"]
+
+[resource]
+default_font = ExtResource("1_uc1im")
+ButtonLabel/base_type = &"Label"
+ButtonLabel/colors/font_shadow_color = Color(0, 0, 0, 0.5)
+ButtonLabel/constants/shadow_offset_x = 1
+ButtonLabel/constants/shadow_offset_y = 1
+ButtonLabel/constants/shadow_outline_size = 0
+GameNameLabel/base_type = &"Label"
+GameNameLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+GameNameLabel/constants/outline_size = 2
+GameNameLabel/constants/shadow_offset_x = 2
+GameNameLabel/constants/shadow_offset_y = 2
+GameNameLabel/constants/shadow_outline_size = 0
+GameNameLabel/font_sizes/font_size = 36
+GridContainer/constants/h_separation = 1
+GridContainer/constants/v_separation = 0

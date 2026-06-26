@@ -22,6 +22,5 @@ max_speed = 55.0
 min_rotation_speed = -1.0
 max_rotation_speed = 1.0
 split_into_variants = Array[ExtResource("1_cwlje")]([ExtResource("2_mpri6"), ExtResource("3_6w40j"), ExtResource("4_l46m5")])
-min_split = 1
 max_split = 3
 metadata/_custom_type_script = "uid://blmr3mmee6fnm"

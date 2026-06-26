@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://b0010kohr17nn"]
+
+[ext_resource type="Texture2D" uid="uid://w4pm54haf1nh" path="res://assets/img/ui/PBP-V2.png" id="1_hb7r5"]
+
+[resource]
+atlas = ExtResource("1_hb7r5")
+region = Rect2(158, 50, 36, 15)

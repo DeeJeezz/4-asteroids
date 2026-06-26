@@ -727,7 +727,6 @@ autoplay = "default"
 frame_progress = 0.20713712
 
 [node name="Stars" type="AnimatedSprite2D" parent="Backgrounds" unique_id=2006389570]
-modulate = Color(1, 1, 1, 0.74509805)
 position = Vector2(320, 180)
 sprite_frames = SubResource("SpriteFrames_57reo")
 autoplay = "default"
@@ -739,7 +738,7 @@ sprite_frames = SubResource("SpriteFrames_vgtem")
 autoplay = "default"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Backgrounds" unique_id=726313638]
-color = Color(0.6255969, 0.6255972, 0.6255971, 1)
+color = Color(0.7246431, 0.72464246, 0.7246426, 1)
 
 [node name="Entities" type="Node2D" parent="." unique_id=1617050387]
 

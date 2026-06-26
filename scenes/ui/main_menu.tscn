@@ -1,17 +1,37 @@
 [gd_scene format=3 uid="uid://dsohcjv8th287"]
 
 [ext_resource type="Script" uid="uid://cfll18aiohvkc" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
+[ext_resource type="Theme" uid="uid://c43xwlxorrpj4" path="res://resources/themes/ui_theme.tres" id="2_btxxm"]
+[ext_resource type="Texture2D" uid="uid://c3xbi0u32yrpp" path="res://resources/atlases/ui/main_menu_background.tres" id="2_otr3d"]
+[ext_resource type="Texture2D" uid="uid://jtbmnu7bi5b0" path="res://resources/atlases/ui/green_normal_button.tres" id="2_x2yvf"]
+[ext_resource type="Texture2D" uid="uid://bi61fcodprvm" path="res://resources/atlases/ui/red_normal_button.tres" id="3_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://td4q6qup16xt" path="res://resources/atlases/ui/green_pressed_button.tres" id="3_uhagc"]
+[ext_resource type="Texture2D" uid="uid://b0010kohr17nn" path="res://resources/atlases/ui/red_pressed_button.tres" id="4_x2yvf"]
+[ext_resource type="Texture2D" uid="uid://cnrghf1til7lt" path="res://assets/img/ui/W.png" id="7_7suek"]
+[ext_resource type="Texture2D" uid="uid://b3cjdnaljyjyl" path="res://assets/img/ui/A.png" id="8_otr3d"]
+[ext_resource type="Texture2D" uid="uid://di13nd6vmt2qr" path="res://assets/img/ui/S.png" id="9_8ekit"]
+[ext_resource type="Texture2D" uid="uid://b8tk2wd7m8lb8" path="res://assets/img/ui/D.png" id="10_n4uci"]
+[ext_resource type="Texture2D" uid="uid://bdolstlv068sr" path="res://assets/img/ui/SPACE.png" id="11_877pj"]
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1931380372]
 script = ExtResource("1_sl1te")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=103126792]
+[node name="ColorRect" type="Control" parent="." unique_id=1971333388]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect" unique_id=550735604]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_otr3d")
 
 [node name="GameNameLabel" type="Label" parent="ColorRect" unique_id=970281267]
 layout_mode = 1
@@ -26,7 +46,11 @@ offset_right = 37.0
 offset_bottom = -47.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_btxxm")
+theme_type_variation = &"GameNameLabel"
 text = "Asteroids"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect" unique_id=11035328]
 layout_mode = 1
@@ -42,13 +66,140 @@ offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartGameButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=854087225]
+[node name="StartGameButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=2034700831]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
-text = "Start game"
+theme = ExtResource("2_btxxm")
+texture_normal = ExtResource("2_x2yvf")
+texture_pressed = ExtResource("3_uhagc")
+texture_hover = ExtResource("3_uhagc")
+stretch_mode = 1
 
-[node name="QuitButton" type="Button" parent="ColorRect/VBoxContainer" unique_id=176417253]
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/StartGameButton" unique_id=755522220]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("2_btxxm")
+theme_type_variation = &"ButtonLabel"
+text = "Start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="ColorRect/VBoxContainer" unique_id=175294813]
+custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
+theme = ExtResource("2_btxxm")
+texture_normal = ExtResource("3_m1kxf")
+texture_pressed = ExtResource("4_x2yvf")
+texture_hover = ExtResource("4_x2yvf")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/QuitButton" unique_id=1606730896]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_type_variation = &"ButtonLabel"
 text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Container" type="Panel" parent="ColorRect" unique_id=1595682532]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 180.0
+offset_right = 190.0
+offset_bottom = 333.0
+
+[node name="Label" type="Label" parent="ColorRect/Container" unique_id=1668819139]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.5
+offset_right = 23.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("2_btxxm")
+theme_type_variation = &"TooltipLabel"
+text = "Hints"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/Container" unique_id=1125471401]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/Container/VBoxContainer" unique_id=867341357]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect/Container/VBoxContainer/HBoxContainer" unique_id=1596547039]
+layout_mode = 2
+theme = ExtResource("2_btxxm")
+columns = 3
+
+[node name="Divider" type="Control" parent="ColorRect/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=502992968]
+layout_mode = 2
+
+[node name="W" type="TextureRect" parent="ColorRect/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=1188551962]
+layout_mode = 2
+texture = ExtResource("7_7suek")
+stretch_mode = 2
+
+[node name="Divider2" type="Control" parent="ColorRect/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=344190894]
+layout_mode = 2
+
+[node name="A" type="TextureRect" parent="ColorRect/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=419978496]
+layout_mode = 2
+texture = ExtResource("8_otr3d")
+stretch_mode = 2
+
+[node name="S" type="TextureRect" parent="ColorRect/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=1276777998]
+layout_mode = 2
+texture = ExtResource("9_8ekit")
+stretch_mode = 2
+
+[node name="D" type="TextureRect" parent="ColorRect/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=1277650486]
+layout_mode = 2
+texture = ExtResource("10_n4uci")
+stretch_mode = 2
+
+[node name="MoveHint" type="Label" parent="ColorRect/Container/VBoxContainer/HBoxContainer" unique_id=855751425]
+layout_mode = 2
+theme = ExtResource("2_btxxm")
+text = "- Move"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/Container/VBoxContainer" unique_id=1169486254]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Container/VBoxContainer/HBoxContainer2" unique_id=1743108223]
+layout_mode = 2
+texture = ExtResource("11_877pj")
+
+[node name="ShootHint" type="Label" parent="ColorRect/Container/VBoxContainer/HBoxContainer2" unique_id=1929765831]
+layout_mode = 2
+theme = ExtResource("2_btxxm")
+text = "- Shoot"
 
 [connection signal="button_down" from="ColorRect/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_down"]
 [connection signal="button_down" from="ColorRect/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_down"]

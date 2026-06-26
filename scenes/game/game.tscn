@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://fngmfujpltc6" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://ctp0k6geylpwj" path="res://scenes/world/world.tscn" id="2_7h61r"]
 [ext_resource type="PackedScene" uid="uid://da7kscba16viy" path="res://scenes/ui/hud.tscn" id="3_0sr1o"]
-[ext_resource type="AudioStream" uid="uid://d31uaub1ukq3t" path="res://assets/audio/Broken Communicator.mp3" id="4_lfrn8"]
-[ext_resource type="AudioStream" uid="uid://d02272imxhus" path="res://assets/audio/Solar Glide.mp3" id="5_5i0tg"]
+[ext_resource type="AudioStream" uid="uid://d31uaub1ukq3t" path="res://assets/audio/background_music/Broken Communicator.mp3" id="4_lfrn8"]
+[ext_resource type="AudioStream" uid="uid://d02272imxhus" path="res://assets/audio/background_music/Solar Glide.mp3" id="5_5i0tg"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qvja3"]
 streams_count = 2
@@ -20,5 +20,5 @@ script = ExtResource("1_sul5r")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=125432090]
 stream = SubResource("AudioStreamRandomizer_qvja3")
-volume_db = -15.0
+volume_db = -20.0
 autoplay = true

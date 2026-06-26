@@ -12,8 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://di13nd6vmt2qr" path="res://assets/img/ui/S.png" id="9_8ekit"]
 [ext_resource type="Texture2D" uid="uid://b8tk2wd7m8lb8" path="res://assets/img/ui/D.png" id="10_n4uci"]
 [ext_resource type="Texture2D" uid="uid://bdolstlv068sr" path="res://assets/img/ui/SPACE.png" id="11_877pj"]
-[ext_resource type="AudioStream" uid="uid://4erqdsy1xx3s" path="res://assets/audio/Low-G Accident.mp3" id="13_n4uci"]
-[ext_resource type="AudioStream" uid="uid://bn63dyumq71hj" path="res://assets/audio/The Mothership.mp3" id="14_877pj"]
+[ext_resource type="AudioStream" uid="uid://4erqdsy1xx3s" path="res://assets/audio/background_music/Low-G Accident.mp3" id="13_n4uci"]
+[ext_resource type="AudioStream" uid="uid://bn63dyumq71hj" path="res://assets/audio/background_music/The Mothership.mp3" id="14_877pj"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qvja3"]
 streams_count = 2

@@ -16,6 +16,9 @@ var _can_move: bool = true
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var collision_polygon: CollisionPolygon2D = $CollisionPolygon2D
 @onready var explosion: AnimatedSprite2D = $Explosion
+@onready var move_sfx: AudioStreamPlayer2D = $SFX/MoveSFX
+@onready var damage_sfx: AudioStreamPlayer2D = $SFX/DamageSFX
+@onready var explosion_sfx: AudioStreamPlayer2D = $SFX/ExplosionSFX
 
 
 func _ready() -> void:
@@ -42,6 +45,7 @@ func _physics_process(delta: float) -> void:
 
 func take_hit(_damage: int, _source: Node) -> void:
 	sprite.flash()
+	damage_sfx.play()
 	Signals.player_hit.emit()
 
 
@@ -51,6 +55,7 @@ func _connect_signals() -> void:
 
 
 func _on_player_death_requested() -> void:
+	explosion_sfx.play()
 	hurtbox.set_deferred("monitoring", false)
 	collision_polygon.set_deferred("disabled", false)
 	_can_move = false
@@ -64,6 +69,12 @@ func _handle_input() -> void:
 
 	var rotation_thrust: float = Input.get_axis(&"move_left", &"move_right")
 	_target_torque = rotation_thrust * rotation_speed
+	
+	if thrust != 0 or rotation_thrust != 0:
+		if not move_sfx.playing:
+			move_sfx.play()
+	else:
+		move_sfx.stop()
 
 	if Input.is_action_pressed(&"shoot"):
 		gun.shoot()

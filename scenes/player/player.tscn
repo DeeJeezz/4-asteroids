@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bt4yol4gmmie6" path="res://scenes/bullet/bullet.tscn" id="3_lvxji"]
 [ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="4_0owmy"]
+[ext_resource type="AudioStream" uid="uid://cliwrjkhs2qwn" path="res://assets/audio/sfx/Asteroids_Fire.ogg" id="8_8ydkj"]
 [ext_resource type="Texture2D" uid="uid://b4ovenfs7lvpt" path="res://assets/img/explosion/explosion_1_01.png" id="9_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://k0muxdy3cp2x" path="res://assets/img/explosion/explosion_1_02.png" id="10_8ydkj"]
 [ext_resource type="Texture2D" uid="uid://dy2tnws4j8q1c" path="res://assets/img/explosion/explosion_1_03.png" id="11_3j4b4"]
@@ -19,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://ucjmkauvxppn" path="res://assets/img/explosion/explosion_1_09.png" id="17_j4nxn"]
 [ext_resource type="Texture2D" uid="uid://checw7tcur234" path="res://assets/img/explosion/explosion_1_10.png" id="18_28m0y"]
 [ext_resource type="Texture2D" uid="uid://bxbv2pq81k2y1" path="res://assets/img/explosion/explosion_1_11.png" id="19_uniwh"]
+[ext_resource type="AudioStream" uid="uid://mat1jjgn2l2v" path="res://assets/audio/sfx/Asteroids_Move.ogg" id="21_3j4b4"]
+[ext_resource type="AudioStream" uid="uid://dbojgrnf1qcwh" path="res://assets/audio/sfx/Asteroids_Damage.ogg" id="22_yj68g"]
+[ext_resource type="AudioStream" uid="uid://fb2lut0gx4nq" path="res://assets/audio/sfx/Asteroids_Explosion.ogg" id="23_ioxgp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsylp"]
 shader = ExtResource("3_qek5x")
@@ -134,6 +138,10 @@ cooldown = 0.5
 [node name="BulletSpawnPoint" type="Marker2D" parent="Sprite2D/Gun" unique_id=159960807]
 rotation = 1.5707964
 
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="Sprite2D/Gun" unique_id=294305342]
+stream = ExtResource("8_8ydkj")
+volume_db = -20.0
+
 [node name="Wrapped" type="Node" parent="." unique_id=807411937]
 script = ExtResource("2_dovo2")
 metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
@@ -146,3 +154,17 @@ texture = SubResource("GradientTexture2D_4xuyx")
 sprite_frames = SubResource("SpriteFrames_qvja3")
 frame = 11
 frame_progress = 1.0
+
+[node name="SFX" type="Node2D" parent="." unique_id=479603438]
+
+[node name="MoveSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=286163812]
+stream = ExtResource("21_3j4b4")
+volume_db = -10.0
+
+[node name="DamageSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=2000409052]
+stream = ExtResource("22_yj68g")
+volume_db = -20.0
+
+[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=1054201517]
+stream = ExtResource("23_ioxgp")
+volume_db = -20.0

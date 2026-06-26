@@ -48,3 +48,7 @@ Asteroids is famous for its use of Vector Graphics in lieu of sprites.
 
 * https://adwitr.itch.io/button-asset-pack
 * https://greenpixels.itch.io/pixel-art-asset-3
+
+### Music
+
+* https://cathran-music.itch.io/space-sci-fi-music

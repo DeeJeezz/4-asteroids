@@ -9,11 +9,13 @@ extends CharacterBody2D
 
 var _target_thrust: float = 0
 var _target_torque: float = 0
+var _can_move: bool = true
 
 @onready var gun: Gun = $Sprite2D/Gun
 @onready var sprite: MaterialSprite = $Sprite2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var collision_polygon: CollisionPolygon2D = $CollisionPolygon2D
+@onready var explosion: AnimatedSprite2D = $Explosion
 
 
 func _ready() -> void:
@@ -26,14 +28,15 @@ func _process(_delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 
-	var forward := Vector2.DOWN.rotated(rotation)
-	velocity += forward * _target_thrust * delta
-	rotation += _target_torque * delta
+	if _can_move:
+		var forward := Vector2.DOWN.rotated(rotation)
+		velocity += forward * _target_thrust * delta
+		rotation += _target_torque * delta
 
-	if velocity.length() > max_speed:
-		velocity = velocity.normalized() * max_speed
+		if velocity.length() > max_speed:
+			velocity = velocity.normalized() * max_speed
 
-	velocity *= (1.0 - drag * delta)
+		velocity *= (1.0 - drag * delta)
 	move_and_slide()
 
 
@@ -48,7 +51,11 @@ func _connect_signals() -> void:
 
 
 func _on_player_death_requested() -> void:
-	queue_free()
+	hurtbox.set_deferred("monitoring", false)
+	collision_polygon.set_deferred("disabled", false)
+	_can_move = false
+	explosion.play()
+	explosion.animation_finished.connect(queue_free)
 
 
 func _handle_input() -> void:

@@ -120,7 +120,7 @@ func spawn_warp() -> void:
 func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
 	_current_asteroids -= 1
 	Signals.add_score_requested.emit(asteroid.current_config.score)
-	prints("Current asteroids", _current_asteroids)
+	print_debug("Current asteroids ", _current_asteroids)
 	print_debug("Destroyed asteroid ", asteroid)
 	if _current_asteroids < ceili(max_asteroids_per_wave * new_asteroids_wave_threshold):
 		generate_wave()

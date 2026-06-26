@@ -1,7 +1,7 @@
 class_name Game
 extends Node2D
 
-var _player_hp: int = 3
+var _player_hp: int = 1
 var _player_score: int = 0
 
 

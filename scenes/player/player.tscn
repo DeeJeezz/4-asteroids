@@ -8,6 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://bt4yol4gmmie6" path="res://scenes/bullet/bullet.tscn" id="3_lvxji"]
 [ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="4_0owmy"]
+[ext_resource type="Texture2D" uid="uid://b4ovenfs7lvpt" path="res://assets/img/explosion/explosion_1_01.png" id="9_lgqa7"]
+[ext_resource type="Texture2D" uid="uid://k0muxdy3cp2x" path="res://assets/img/explosion/explosion_1_02.png" id="10_8ydkj"]
+[ext_resource type="Texture2D" uid="uid://dy2tnws4j8q1c" path="res://assets/img/explosion/explosion_1_03.png" id="11_3j4b4"]
+[ext_resource type="Texture2D" uid="uid://dwhm7x4tp6nwc" path="res://assets/img/explosion/explosion_1_04.png" id="12_yj68g"]
+[ext_resource type="Texture2D" uid="uid://cbpugok8co361" path="res://assets/img/explosion/explosion_1_05.png" id="13_ioxgp"]
+[ext_resource type="Texture2D" uid="uid://by1gd8l6o5wup" path="res://assets/img/explosion/explosion_1_06.png" id="14_cnsyf"]
+[ext_resource type="Texture2D" uid="uid://cy0ecsm1de8ow" path="res://assets/img/explosion/explosion_1_07.png" id="15_007i1"]
+[ext_resource type="Texture2D" uid="uid://cb6un0icornlh" path="res://assets/img/explosion/explosion_1_08.png" id="16_6cv16"]
+[ext_resource type="Texture2D" uid="uid://ucjmkauvxppn" path="res://assets/img/explosion/explosion_1_09.png" id="17_j4nxn"]
+[ext_resource type="Texture2D" uid="uid://checw7tcur234" path="res://assets/img/explosion/explosion_1_10.png" id="18_28m0y"]
+[ext_resource type="Texture2D" uid="uid://bxbv2pq81k2y1" path="res://assets/img/explosion/explosion_1_11.png" id="19_uniwh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsylp"]
 shader = ExtResource("3_qek5x")
@@ -34,6 +45,50 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_qek5x")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvja3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_lgqa7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8ydkj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_3j4b4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yj68g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ioxgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_cnsyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_007i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6cv16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_j4nxn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_28m0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uniwh")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 18.0
+}]
 
 [node name="Player" type="CharacterBody2D" unique_id=1087837171]
 collision_mask = 0
@@ -86,3 +141,8 @@ metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1352732066]
 energy = 0.4
 texture = SubResource("GradientTexture2D_4xuyx")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=1601178016]
+sprite_frames = SubResource("SpriteFrames_qvja3")
+frame = 11
+frame_progress = 1.0

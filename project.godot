@@ -46,9 +46,11 @@ folder_colors={
 "res://assets/": "teal",
 "res://autoload/": "pink",
 "res://debug/": "red",
+"res://reports/": "red",
 "res://resources/": "purple",
 "res://scenes/": "yellow",
-"res://scripts/": "orange"
+"res://scripts/": "orange",
+"res://shaders/": "blue"
 }
 
 [input]

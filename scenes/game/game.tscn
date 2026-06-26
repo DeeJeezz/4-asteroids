@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://fngmfujpltc6" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://ctp0k6geylpwj" path="res://scenes/world/world.tscn" id="2_7h61r"]
 [ext_resource type="PackedScene" uid="uid://da7kscba16viy" path="res://scenes/ui/hud.tscn" id="3_0sr1o"]
+[ext_resource type="AudioStream" uid="uid://d31uaub1ukq3t" path="res://assets/audio/Broken Communicator.mp3" id="4_lfrn8"]
+[ext_resource type="AudioStream" uid="uid://d02272imxhus" path="res://assets/audio/Solar Glide.mp3" id="5_5i0tg"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qvja3"]
+streams_count = 2
+stream_0/stream = ExtResource("4_lfrn8")
+stream_1/stream = ExtResource("5_5i0tg")
 
 [node name="Game" type="Node2D" unique_id=27615216]
 script = ExtResource("1_sul5r")
@@ -10,3 +17,8 @@ script = ExtResource("1_sul5r")
 [node name="World" parent="." unique_id=1713281119 instance=ExtResource("2_7h61r")]
 
 [node name="HUD" parent="." unique_id=1355053922 instance=ExtResource("3_0sr1o")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=125432090]
+stream = SubResource("AudioStreamRandomizer_qvja3")
+volume_db = -15.0
+autoplay = true

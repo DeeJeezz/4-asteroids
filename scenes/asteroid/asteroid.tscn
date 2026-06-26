@@ -1,47 +1,27 @@
 [gd_scene format=3 uid="uid://blpstx4vgrd1h"]
 
 [ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_ctvhk"]
-[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="7_5svfo"]
-[ext_resource type="Texture2D" uid="uid://cfskyrmr1l8mi" path="res://assets/img/asteroids/PixelStarshipsPackage_Asteroids_01.png" id="8_lsgqe"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="9_otu8h"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="10_d6s71"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="11_efgms"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_suqjk"]
-shader = ExtResource("7_5svfo")
-shader_parameter/use_cracks = true
-shader_parameter/use_hit_flash = false
-shader_parameter/use_iframes_flash = false
-shader_parameter/crack_color = Color(0.3973318, 0, 0.0056484086, 1)
-shader_parameter/crack_amount = 0.0
-shader_parameter/crack_scale = 12.000000475
-shader_parameter/crack_thickness = 0.0250000011875
-shader_parameter/crack_opacity = 1.0
-shader_parameter/crack_pixel_snap = 16.0
-shader_parameter/crack_seed = 0.0
-shader_parameter/hit_flash_color = Color(0.6325899, 0.63259006, 0.63259, 0.6)
-shader_parameter/hit_flash_amount = 0.0
-shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
-shader_parameter/iframes_speed = 12.0000001788144
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tp4vn"]
-atlas = ExtResource("8_lsgqe")
-region = Rect2(19, 142, 100, 102)
-
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ekkxt"]
 points = PackedVector2Array(-47, -20, -28, -29, -20, -49, 25, -49, 48, -18, 40, -4, 50, 27, 45, 44, 8, 32, -8, 50, -42, 44, -47, 31, -37, 17, -49, -7)
 
-[node name="Asteroid" type="CharacterBody2D" unique_id=1666082907]
+[node name="Asteroid" type="CharacterBody2D" unique_id=1666082907 node_paths=PackedStringArray("sprite", "collision_shape", "hurtbox", "hurtbox_collision_shape", "wrapped")]
 collision_layer = 2
 collision_mask = 0
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 4294901760
 script = ExtResource("1_ctvhk")
+sprite = NodePath("Sprite2D")
+collision_shape = NodePath("CollisionShape2D")
+hurtbox = NodePath("Hurtbox")
+hurtbox_collision_shape = NodePath("Hurtbox/CollisionShape2D")
+wrapped = NodePath("Wrapped")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
-material = SubResource("ShaderMaterial_suqjk")
-texture = SubResource("AtlasTexture_tp4vn")
 region_rect = Rect2(273, 12, 100, 107)
 script = ExtResource("9_otu8h")
 hit_flash_duration = 0.3

@@ -1,11 +1,8 @@
 [gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://cfdkordoyt28m"]
 
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_lra0s"]
-[ext_resource type="Resource" uid="uid://crvem31agx6ae" path="res://resources/asteroid/small_asteroid_1.tres" id="2_3h4fv"]
 [ext_resource type="Texture2D" uid="uid://01kphrjdbn3t" path="res://resources/atlases/asteroids/medium_asteroid_atlas_1.tres" id="2_cjtu6"]
-[ext_resource type="Resource" uid="uid://dqa327tlx5hkw" path="res://resources/asteroid/small_asteroid_2.tres" id="3_gmpsg"]
-[ext_resource type="Resource" uid="uid://bygxjbku0pilq" path="res://resources/asteroid/small_asteroid_3.tres" id="4_tkyod"]
-[ext_resource type="Resource" uid="uid://cj3l1dipe2hhe" path="res://resources/asteroid/small_asteroid_4.tres" id="5_x0q66"]
+[ext_resource type="Material" uid="uid://cmbfxmat3tvp4" path="res://resources/materials/medium_asteroid_sprite_material.tres" id="2_rxhd2"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_lra0s"]
 points = PackedVector2Array(-16, -25, 23, -26, 23, -13, 11, 1, 17, 17, 17, 25, -5, 27, -20, 22, -24, 17, -20, -3)
@@ -14,10 +11,11 @@ points = PackedVector2Array(-16, -25, 23, -26, 23, -13, 11, 1, 17, 17, 17, 25, -
 script = ExtResource("1_lra0s")
 texture = ExtResource("2_cjtu6")
 collision_shape = SubResource("ConvexPolygonShape2D_lra0s")
+sprite_material = ExtResource("2_rxhd2")
 hp = 8
+wrap_margin = 64.0
 min_speed = 35.0
 max_speed = 50.0
 min_rotation_speed = -1.5
 max_rotation_speed = 1.5
-split_into_variants = Array[ExtResource("1_lra0s")]([ExtResource("2_3h4fv"), ExtResource("3_gmpsg"), ExtResource("4_tkyod"), ExtResource("5_x0q66")])
 metadata/_custom_type_script = "uid://blmr3mmee6fnm"

@@ -98,6 +98,15 @@ _data = {
 &"warp": SubResource("Animation_m4gl0")
 }
 
+[sub_resource type="Gradient" id="Gradient_uxq0p"]
+offsets = PackedFloat32Array(0, 0.7486413)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_57reo"]
+gradient = SubResource("Gradient_uxq0p")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Warp" type="Area2D" unique_id=538909338]
 collision_layer = 0
 monitorable = false
@@ -119,3 +128,6 @@ autoplay = &"spawn"
 
 [node name="TTLTimer" type="Timer" parent="." unique_id=1031916306]
 one_shot = true
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1223364658]
+texture = SubResource("GradientTexture2D_57reo")

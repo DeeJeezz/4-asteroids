@@ -9,6 +9,13 @@ extends Node
 @onready var asteroid_scene: PackedScene = preload("res://scenes/asteroid/asteroid.tscn")
 
 
+var _asteroid_prefab: Asteroid
+
+
+func _ready() -> void:
+	_asteroid_prefab = asteroid_scene.instantiate()
+
+
 func spawn_big_asteroid() -> Asteroid:
 	return spawn_asteroid_from_config(big_asteroid_variants.pick_random())
 
@@ -22,6 +29,6 @@ func spawn_small_asteroid() -> Asteroid:
 
 
 func spawn_asteroid_from_config(config: AsteroidConfig) -> Asteroid:
-	var asteroid: Asteroid = asteroid_scene.instantiate()
+	var asteroid: Asteroid = _asteroid_prefab.duplicate()
 	asteroid.setup_from_config(config)
 	return asteroid

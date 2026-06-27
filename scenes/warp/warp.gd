@@ -73,7 +73,7 @@ func _on_end_of_life(_anim_name: StringName) -> void:
 func _on_warp_finished(_anim_name: StringName) -> void:
 	if _entered_object is CharacterBody2D:
 		var warp_position: Vector2 = _get_random_warp_position(min_warp_distance, max_warp_distance)
-		Signals.player_respawn_requested.emit(warp_position, _entered_object.rotation, _entered_object.velocity)
+		Signals.player_respawn_requested.emit(warp_position, _entered_object.rotation, (_entered_object as CharacterBody2D).velocity)
 		warped.emit()
 	queue_free()
 

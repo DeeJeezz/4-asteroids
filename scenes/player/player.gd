@@ -13,8 +13,8 @@ var _can_move: bool = true
 
 @onready var gun: Gun = $Sprite2D/Gun
 @onready var sprite: MaterialSprite = $Sprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hurtbox: Hurtbox = $Hurtbox
-@onready var collision_polygon: CollisionPolygon2D = $CollisionPolygon2D
 @onready var explosion: AnimatedSprite2D = $Explosion
 @onready var move_sfx: AudioStreamPlayer2D = $SFX/MoveSFX
 @onready var damage_sfx: AudioStreamPlayer2D = $SFX/DamageSFX
@@ -25,21 +25,17 @@ func _ready() -> void:
 	_connect_signals()
 
 
-func _process(_delta: float) -> void:
-	_handle_input()
-
-
 func _physics_process(delta: float) -> void:
-
+	_handle_input()
 	if _can_move:
-		var forward := Vector2.DOWN.rotated(rotation)
-		velocity += forward * _target_thrust * delta
-		rotation += _target_torque * delta
+		if _target_thrust != 0:
+			var forward := Vector2.DOWN.rotated(rotation)
+			velocity += forward * _target_thrust * delta
+		if _target_torque != 0:
+			rotation += _target_torque * delta
 
-		if velocity.length() > max_speed:
-			velocity = velocity.normalized() * max_speed
-
-		velocity *= (1.0 - drag * delta)
+	velocity *= (1.0 - drag * delta)
+	velocity = velocity.limit_length(max_speed)
 	move_and_slide()
 
 
@@ -56,8 +52,8 @@ func _connect_signals() -> void:
 
 func _on_player_death_requested() -> void:
 	explosion_sfx.play()
+	collision_shape.set_deferred("disabled", true)
 	hurtbox.set_deferred("monitoring", false)
-	collision_polygon.set_deferred("disabled", false)
 	_can_move = false
 	explosion.play()
 	explosion.animation_finished.connect(queue_free)
@@ -78,7 +74,3 @@ func _handle_input() -> void:
 
 	if Input.is_action_pressed(&"shoot"):
 		gun.shoot()
-
-
-func _possible_to_disable_iframes() -> bool:
-	return not hurtbox.has_overlapping_bodies() and not hurtbox.has_overlapping_areas()

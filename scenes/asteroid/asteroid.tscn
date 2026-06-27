@@ -1,45 +1,32 @@
 [gd_scene format=3 uid="uid://blpstx4vgrd1h"]
 
 [ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_ctvhk"]
+[ext_resource type="Texture2D" uid="uid://cjdlgdyartyix" path="res://resources/atlases/asteroids/medium_asteroid_atlas_3.tres" id="2_af6hy"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="9_otu8h"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="10_d6s71"]
-[ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="11_efgms"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ekkxt"]
-points = PackedVector2Array(-47, -20, -28, -29, -20, -49, 25, -49, 48, -18, 40, -4, 50, 27, 45, 44, 8, 32, -8, 50, -42, 44, -47, 31, -37, 17, -49, -7)
+[sub_resource type="CircleShape2D" id="CircleShape2D_cnsyf"]
+radius = 24.0
 
-[node name="Asteroid" type="CharacterBody2D" unique_id=1666082907 node_paths=PackedStringArray("sprite", "collision_shape", "hurtbox", "hurtbox_collision_shape", "wrapped")]
-collision_layer = 2
-collision_mask = 0
-motion_mode = 1
-platform_on_leave = 2
-platform_floor_layers = 4294901760
+[node name="Asteroid" type="Area2D" unique_id=142036267 node_paths=PackedStringArray("sprite", "collision_shape", "wrapped")]
+collision_layer = 258
+collision_mask = 512
 script = ExtResource("1_ctvhk")
 sprite = NodePath("Sprite2D")
 collision_shape = NodePath("CollisionShape2D")
-hurtbox = NodePath("Hurtbox")
-hurtbox_collision_shape = NodePath("Hurtbox/CollisionShape2D")
 wrapped = NodePath("Wrapped")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
+texture = ExtResource("2_af6hy")
 region_rect = Rect2(273, 12, 100, 107)
 script = ExtResource("9_otu8h")
 hit_flash_duration = 0.3
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]
-shape = SubResource("ConvexPolygonShape2D_ekkxt")
+shape = SubResource("CircleShape2D_cnsyf")
 
 [node name="Wrapped" type="Node" parent="." unique_id=1657980441]
 script = ExtResource("10_d6s71")
 wrap_margin = 128.0
 metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
-
-[node name="Hurtbox" type="Area2D" parent="." unique_id=329576549]
-collision_layer = 256
-collision_mask = 512
-script = ExtResource("11_efgms")
-metadata/_custom_type_script = "uid://bkpfvxigulyku"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=508357110]
-debug_color = Color(0.9376211, 1.5016794e-05, 0.6293164, 0.41960785)

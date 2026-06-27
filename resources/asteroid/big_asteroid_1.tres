@@ -7,13 +7,13 @@
 [ext_resource type="Resource" uid="uid://bdu88sumgb0ty" path="res://resources/asteroid/medium_asteroid_2.tres" id="3_d5vrt"]
 [ext_resource type="Resource" uid="uid://b254prbwjt6p6" path="res://resources/asteroid/medium_asteroid_3.tres" id="4_ymnsl"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3w2re"]
-points = PackedVector2Array(-47, -20, -28, -29, -20, -49, 25, -49, 48, -18, 40, -4, 50, 27, 45, 44, 8, 32, -8, 50, -42, 44, -47, 31, -37, 17, -49, -7)
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5vrt"]
+radius = 53.15073
 
 [resource]
 script = ExtResource("1_lra0s")
 texture = ExtResource("2_cjtu6")
-collision_shape = SubResource("ConvexPolygonShape2D_3w2re")
+collision_shape = SubResource("CircleShape2D_d5vrt")
 sprite_material = ExtResource("2_cr52r")
 hp = 12
 wrap_margin = 100.0

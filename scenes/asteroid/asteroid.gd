@@ -1,15 +1,11 @@
 class_name Asteroid
-extends CharacterBody2D
+extends Area2D
 
 signal destroyed(asteroid: Asteroid)
 signal split(asteroid: Asteroid)
 
-const HURTBOX_COLLISION_SHAPE_ENLARGEMENT_COEFF: float = 1.025
-
 @export var sprite: MaterialSprite
 @export var collision_shape: CollisionShape2D
-@export var hurtbox: Hurtbox
-@export var hurtbox_collision_shape: CollisionShape2D
 @export var wrapped: Wrapped
 
 var current_config: AsteroidConfig
@@ -17,20 +13,21 @@ var current_config: AsteroidConfig
 var _hp: int
 var _can_split: bool = false
 var _rotation_velocity: float = 0.0
+var _velocity: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
-	hurtbox.hit.connect(take_hit)
+	body_entered.connect(take_hit)
+	area_entered.connect(take_hit)
 
 
 func _physics_process(delta: float) -> void:
 	rotation += _rotation_velocity * delta
+	global_position += _velocity * delta
 
-	move_and_slide()
 
-
-func take_hit(damage: int, _source: Node) -> void:
-	_hp -= damage
+func take_hit(_body: Node2D) -> void:
+	_hp -= 1
 	sprite.flash()
 	sprite.cracks()
 	if _hp <= 0:
@@ -46,7 +43,7 @@ func setup_from_config(config: AsteroidConfig) -> void:
 	var angle: float = randf_range(0.0, TAU)
 	var speed: float = randf_range(config.min_speed, config.max_speed)
 
-	velocity = Vector2.RIGHT.rotated(angle) * speed
+	_velocity = Vector2.RIGHT.rotated(angle) * speed
 	_rotation_velocity = randf_range(config.min_rotation_speed, config.max_rotation_speed)
 
 	# Setup sprite.
@@ -54,12 +51,8 @@ func setup_from_config(config: AsteroidConfig) -> void:
 	sprite.material = config.sprite_material.duplicate()
 	# Setup collisions.
 	collision_shape.shape = config.collision_shape
-	hurtbox_collision_shape.shape = config.collision_shape
 	# Set how far offscreen wrap will be.
 	wrapped.wrap_margin = config.wrap_margin
-
-	# Enlarge hurtbox collision.
-	hurtbox_collision_shape.scale *= HURTBOX_COLLISION_SHAPE_ENLARGEMENT_COEFF
 
 	_hp = config.hp
 

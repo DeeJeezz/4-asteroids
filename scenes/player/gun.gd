@@ -9,13 +9,18 @@ extends Node2D
 
 
 var _can_shoot: bool = true
+var _bullet_prefab: Bullet
+
+
+func _ready() -> void:
+	_bullet_prefab = bullet_scene.instantiate()
 
 
 func shoot() -> void:
 	if not _can_shoot:
 		return
 
-	var bullet: Bullet = bullet_scene.instantiate()
+	var bullet: Bullet = _bullet_prefab.duplicate()
 	bullet.global_position = bullet_spawn_point.global_position
 	bullet.global_rotation = bullet_spawn_point.global_rotation
 	get_tree().current_scene.add_child(bullet)

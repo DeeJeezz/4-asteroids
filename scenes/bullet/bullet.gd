@@ -4,7 +4,7 @@ extends Area2D
 @export var speed: float = 350.0
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	position += Vector2.UP.rotated(global_rotation) * speed * delta
 
 

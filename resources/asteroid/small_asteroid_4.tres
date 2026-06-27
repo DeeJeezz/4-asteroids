@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://r2h1ucedfcqh" path="res://resources/atlases/asteroids/small_asteroid_atlas_4.tres" id="2_4bnyf"]
 [ext_resource type="Material" uid="uid://djoe8rwl2pkng" path="res://resources/materials/small_asteroid_sprite_material.tres" id="2_rh4d8"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4bnyf"]
-points = PackedVector2Array(1, 13, -8, 10, -12, 4, -10, -1, -9, -9, -5, -13, 7, -11, 12, -2, 4, 10)
+[sub_resource type="CircleShape2D" id="CircleShape2D_rh4d8"]
+radius = 13.038404
 
 [resource]
 script = ExtResource("1_4bnyf")
 texture = ExtResource("2_4bnyf")
-collision_shape = SubResource("ConvexPolygonShape2D_4bnyf")
+collision_shape = SubResource("CircleShape2D_rh4d8")
 sprite_material = ExtResource("2_rh4d8")
 hp = 2
 wrap_margin = 32.0

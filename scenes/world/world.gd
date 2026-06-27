@@ -81,7 +81,7 @@ func generate_wave() -> void:
 			medium_asteroids += 1
 		else:
 			small_asteroids += 1
-	var asteroids: Array[Asteroid] = entity_spawner.generate_asteroids_wave(
+	var asteroids: Array[Asteroid] = await entity_spawner.generate_asteroids_wave(
 		big_asteroids,
 		medium_asteroids,
 		small_asteroids,
@@ -95,10 +95,6 @@ func generate_wave() -> void:
 		asteroid.split.connect(_on_asteroid_split)
 		entities.call_deferred("add_child", asteroid)
 		_current_asteroids += 1
-	print_debug(
-		"Generated new wave of asteroids. Big: %d; Medium: %d; Small: %d."
-		% [big_asteroids, medium_asteroids, small_asteroids],
-	)
 
 
 func spawn_warp() -> void:
@@ -113,15 +109,12 @@ func spawn_warp() -> void:
 	# Connect warp signals.
 	warp.warped.connect(_start_warp_spawn_timer)
 	warp.destroyed.connect(_start_warp_spawn_timer)
-	print_debug("Generated warp")
 
 
 # Processing asteroid destruction.
 func _on_asteroid_destroyed(asteroid: Asteroid) -> void:
 	_current_asteroids -= 1
 	Signals.add_score_requested.emit(asteroid.current_config.score)
-	print_debug("Current asteroids ", _current_asteroids)
-	print_debug("Destroyed asteroid ", asteroid)
 	if _current_asteroids < ceili(max_asteroids_per_wave * new_asteroids_wave_threshold):
 		generate_wave()
 
@@ -139,7 +132,6 @@ func _on_asteroid_split(asteroid: Asteroid) -> void:
 		spawned_asteroid.split.connect(_on_asteroid_split)
 		entities.call_deferred("add_child", spawned_asteroid)
 		_current_asteroids += 1
-	print_debug("Split asteroid", asteroid)
 
 
 func _start_warp_spawn_timer() -> void:

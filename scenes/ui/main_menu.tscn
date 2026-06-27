@@ -12,13 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://di13nd6vmt2qr" path="res://assets/img/ui/S.png" id="9_8ekit"]
 [ext_resource type="Texture2D" uid="uid://b8tk2wd7m8lb8" path="res://assets/img/ui/D.png" id="10_n4uci"]
 [ext_resource type="Texture2D" uid="uid://bdolstlv068sr" path="res://assets/img/ui/SPACE.png" id="11_877pj"]
-[ext_resource type="AudioStream" uid="uid://4erqdsy1xx3s" path="res://assets/audio/background_music/Low-G Accident.mp3" id="13_n4uci"]
-[ext_resource type="AudioStream" uid="uid://bn63dyumq71hj" path="res://assets/audio/background_music/The Mothership.mp3" id="14_877pj"]
+[ext_resource type="AudioStream" uid="uid://cdc5vsvjlff8q" path="res://assets/audio/background_music/in-the-wreckage.wav" id="13_8ekit"]
+[ext_resource type="AudioStream" uid="uid://cfqkx7qfi5or" path="res://assets/audio/background_music/menu.wav" id="14_n4uci"]
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qvja3"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5qtu8"]
 streams_count = 2
-stream_0/stream = ExtResource("13_n4uci")
-stream_1/stream = ExtResource("14_877pj")
+stream_0/stream = ExtResource("13_8ekit")
+stream_1/stream = ExtResource("14_n4uci")
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1931380372]
 script = ExtResource("1_sl1te")
@@ -209,8 +209,8 @@ theme = ExtResource("2_btxxm")
 text = "- Shoot"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1556757921]
-stream = SubResource("AudioStreamRandomizer_qvja3")
-volume_db = -15.0
+stream = SubResource("AudioStreamRandomizer_5qtu8")
+volume_db = -10.0
 autoplay = true
 
 [connection signal="button_down" from="Control/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_down"]

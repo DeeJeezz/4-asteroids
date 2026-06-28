@@ -24,13 +24,6 @@
 [ext_resource type="AudioStream" uid="uid://dbojgrnf1qcwh" path="res://assets/audio/sfx/Asteroids_Damage.ogg" id="22_yj68g"]
 [ext_resource type="AudioStream" uid="uid://fb2lut0gx4nq" path="res://assets/audio/sfx/Asteroids_Explosion.ogg" id="23_ioxgp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvja3"]
-size = Vector2(20, 47)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qvja3"]
-radius = 8.0
-height = 18.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsylp"]
 shader = ExtResource("3_qek5x")
 shader_parameter/use_cracks = false
@@ -119,13 +112,13 @@ monitorable = false
 script = ExtResource("2_qek5x")
 metadata/_custom_type_script = "uid://bkpfvxigulyku"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1559664153]
-position = Vector2(0, -0.5)
-shape = SubResource("RectangleShape2D_qvja3")
-debug_color = Color(0.93684244, 0.028027885, 0.62063164, 0.41960785)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=554624268]
+rotation = -1.5707964
+polygon = PackedVector2Array(3.0000002, -7, 12, -5.9999995, 20, -4.999999, 25, -1.9999989, 25, 2.0000012, 20, 5.000001, 12, 6.0000005, 2.9999998, 7, -3.0000002, 7, -7.0000005, 13, -13.000001, 12.999999, -19, 7.999999, -24, 4.999999, -24, -5.000001, -19, -8.000001, -12.999999, -13.000001, -6.9999995, -13, -2.9999998, -7)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1836852376]
-shape = SubResource("CapsuleShape2D_qvja3")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1116834371]
+rotation = -1.5707964
+polygon = PackedVector2Array(3, -6, 12, -5, 20, -4, 23, -2, 23, 2, 20, 4, 12, 5, 3, 6, -3, 6, -7, 12, -13, 12, -18, 7, -23, 5, -23, -5, -18, -7, -13, -12, -7, -12, -3, -6)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1323982878]
 material = SubResource("ShaderMaterial_tsylp")

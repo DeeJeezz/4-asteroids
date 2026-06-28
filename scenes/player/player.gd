@@ -13,7 +13,7 @@ var _can_move: bool = true
 
 @onready var gun: Gun = $Sprite2D/Gun
 @onready var sprite: MaterialSprite = $Sprite2D
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var collision_polygon: CollisionPolygon2D = $CollisionPolygon2D
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var explosion: AnimatedSprite2D = $Explosion
 @onready var move_sfx: AudioStreamPlayer2D = $SFX/MoveSFX
@@ -52,7 +52,7 @@ func _connect_signals() -> void:
 
 func _on_player_death_requested() -> void:
 	explosion_sfx.play()
-	collision_shape.set_deferred("disabled", true)
+	collision_polygon.set_deferred("disabled", true)
 	hurtbox.set_deferred("monitoring", false)
 	_can_move = false
 	explosion.play()

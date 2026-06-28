@@ -1,5 +1,5 @@
-extends CanvasLayer
 class_name MainMenu
+extends CanvasLayer
 
 @onready var high_score_h_box_container: HBoxContainer = $Control/HighScoreHBoxContainer
 @onready var high_score_label: Label = $Control/HighScoreHBoxContainer/HighScoreLabel

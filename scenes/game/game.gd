@@ -1,6 +1,8 @@
 class_name Game
 extends Node2D
 
+const GAME_OVER_SCREEN_VISIBILITY_DELAY: float = 0.75
+
 var _player_hp: int = 3
 var _player_score: int = 0
 
@@ -36,9 +38,13 @@ func _connect_signals() -> void:
 
 
 func _on_player_death_requested() -> void:
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(GAME_OVER_SCREEN_VISIBILITY_DELAY).timeout
+	game_over_screen.setup(_player_score)
 	game_over_screen.show()
-	SaveManager.save_game(GameController.session)
+	hud.hide()
+	if _player_score > GameController.session.score:
+		GameController.session.score = _player_score
+		SaveManager.save_game(GameController.session)
 
 
 func _on_game_pause_set(pause: bool) -> void:
@@ -55,5 +61,4 @@ func _on_player_hit() -> void:
 
 func _on_add_score_requested(score: int) -> void:
 	_player_score += score
-	GameController.session.score = _player_score
 	Signals.ui_score_change_requested.emit(_player_score)

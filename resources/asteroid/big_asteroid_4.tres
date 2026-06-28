@@ -1,19 +1,19 @@
-[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://y6l31q2piigp"]
+[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://dj5u0oeoqs8mm"]
 
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_cwlje"]
 [ext_resource type="Texture2D" uid="uid://c4ibf4myp5kf6" path="res://resources/atlases/asteroids/big_asteroid_atlas_4.tres" id="2_3abpk"]
-[ext_resource type="Resource" uid="uid://cfdkordoyt28m" path="res://resources/asteroid/medium_asteroid_1.tres" id="2_mpri6"]
+[ext_resource type="Resource" uid="uid://cd3aphk5j1nf1" path="res://resources/asteroid/medium_asteroid_1.tres" id="2_mpri6"]
 [ext_resource type="Material" uid="uid://jtwgu3grufeq" path="res://resources/materials/big_asteroid_sprite_material.tres" id="2_s80oo"]
-[ext_resource type="Resource" uid="uid://bdu88sumgb0ty" path="res://resources/asteroid/medium_asteroid_2.tres" id="3_6w40j"]
-[ext_resource type="Resource" uid="uid://b254prbwjt6p6" path="res://resources/asteroid/medium_asteroid_3.tres" id="4_l46m5"]
+[ext_resource type="Resource" uid="uid://ckc1hlstc8yaf" path="res://resources/asteroid/medium_asteroid_2.tres" id="3_6w40j"]
+[ext_resource type="Resource" uid="uid://d2pn4w8kansei" path="res://resources/asteroid/medium_asteroid_3.tres" id="4_l46m5"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6w40j"]
-radius = 52.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bhynb"]
+points = PackedVector2Array(-49, -13, -41, -26, -51, -36, -44, -53, 15, -52, 49, -17, 49, 28, 41, 46, 30, 46, 19, 41, 5, 53, -18, 52, -42, 42, -42, 28, -34, 12)
 
 [resource]
 script = ExtResource("1_cwlje")
 texture = ExtResource("2_3abpk")
-collision_shape = SubResource("CircleShape2D_6w40j")
+collision_shape = SubResource("ConvexPolygonShape2D_bhynb")
 sprite_material = ExtResource("2_s80oo")
 hp = 12
 wrap_margin = 100.0

@@ -1,16 +1,16 @@
-[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://bygxjbku0pilq"]
+[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://csx0kp3jn8lt6"]
 
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_bdmvy"]
 [ext_resource type="Texture2D" uid="uid://cosrv0abvabvj" path="res://resources/atlases/asteroids/small_asteroid_atlas_3.tres" id="2_bdmvy"]
 [ext_resource type="Material" uid="uid://djoe8rwl2pkng" path="res://resources/materials/small_asteroid_sprite_material.tres" id="2_xlkn8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xlkn8"]
-radius = 13.038404
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_bdmvy"]
+points = PackedVector2Array(-4, 13, -9, 11, -12, 7, -9, -1, -10, -7, -6, -13, 6, -12, 12, -6, 4, 10)
 
 [resource]
 script = ExtResource("1_bdmvy")
 texture = ExtResource("2_bdmvy")
-collision_shape = SubResource("CircleShape2D_xlkn8")
+collision_shape = SubResource("ConvexPolygonShape2D_bdmvy")
 sprite_material = ExtResource("2_xlkn8")
 hp = 2
 wrap_margin = 32.0

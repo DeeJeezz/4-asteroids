@@ -1,20 +1,20 @@
-[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://b254prbwjt6p6"]
+[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://d2pn4w8kansei"]
 
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_rrbem"]
 [ext_resource type="Texture2D" uid="uid://cjdlgdyartyix" path="res://resources/atlases/asteroids/medium_asteroid_atlas_3.tres" id="2_evq8m"]
-[ext_resource type="Resource" uid="uid://crvem31agx6ae" path="res://resources/asteroid/small_asteroid_1.tres" id="2_jwl2a"]
+[ext_resource type="Resource" uid="uid://c26o55us7edvl" path="res://resources/asteroid/small_asteroid_1.tres" id="2_jwl2a"]
 [ext_resource type="Material" uid="uid://cmbfxmat3tvp4" path="res://resources/materials/medium_asteroid_sprite_material.tres" id="2_rtkd0"]
-[ext_resource type="Resource" uid="uid://dqa327tlx5hkw" path="res://resources/asteroid/small_asteroid_2.tres" id="3_ui6hb"]
-[ext_resource type="Resource" uid="uid://bygxjbku0pilq" path="res://resources/asteroid/small_asteroid_3.tres" id="4_tebe6"]
-[ext_resource type="Resource" uid="uid://cj3l1dipe2hhe" path="res://resources/asteroid/small_asteroid_4.tres" id="5_e5qat"]
+[ext_resource type="Resource" uid="uid://c3txanlufawpy" path="res://resources/asteroid/small_asteroid_2.tres" id="3_ui6hb"]
+[ext_resource type="Resource" uid="uid://csx0kp3jn8lt6" path="res://resources/asteroid/small_asteroid_3.tres" id="4_tebe6"]
+[ext_resource type="Resource" uid="uid://vy7lhwemfeas" path="res://resources/asteroid/small_asteroid_4.tres" id="5_e5qat"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ui6hb"]
-radius = 24.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_rrbem"]
+points = PackedVector2Array(-1, -19, 9, -26, 24, -21, 23, 0, 13, 16, -2, 27, -14, 23, -19, 18, -16, 8, -23, -5, -24, -22, -15, -24, -7, -20)
 
 [resource]
 script = ExtResource("1_rrbem")
 texture = ExtResource("2_evq8m")
-collision_shape = SubResource("CircleShape2D_ui6hb")
+collision_shape = SubResource("ConvexPolygonShape2D_rrbem")
 sprite_material = ExtResource("2_rtkd0")
 hp = 7
 wrap_margin = 64.0

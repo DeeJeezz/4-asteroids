@@ -1,20 +1,20 @@
-[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://cfdkordoyt28m"]
+[gd_resource type="Resource" script_class="AsteroidConfig" format=3 uid="uid://cd3aphk5j1nf1"]
 
 [ext_resource type="Script" uid="uid://blmr3mmee6fnm" path="res://scripts/resources/asteroid_config.gd" id="1_lra0s"]
-[ext_resource type="Resource" uid="uid://crvem31agx6ae" path="res://resources/asteroid/small_asteroid_1.tres" id="2_3h4fv"]
+[ext_resource type="Resource" uid="uid://c26o55us7edvl" path="res://resources/asteroid/small_asteroid_1.tres" id="2_3h4fv"]
 [ext_resource type="Texture2D" uid="uid://01kphrjdbn3t" path="res://resources/atlases/asteroids/medium_asteroid_atlas_1.tres" id="2_cjtu6"]
 [ext_resource type="Material" uid="uid://cmbfxmat3tvp4" path="res://resources/materials/medium_asteroid_sprite_material.tres" id="2_rxhd2"]
-[ext_resource type="Resource" uid="uid://dqa327tlx5hkw" path="res://resources/asteroid/small_asteroid_2.tres" id="3_gmpsg"]
-[ext_resource type="Resource" uid="uid://bygxjbku0pilq" path="res://resources/asteroid/small_asteroid_3.tres" id="4_tkyod"]
-[ext_resource type="Resource" uid="uid://cj3l1dipe2hhe" path="res://resources/asteroid/small_asteroid_4.tres" id="5_x0q66"]
+[ext_resource type="Resource" uid="uid://c3txanlufawpy" path="res://resources/asteroid/small_asteroid_2.tres" id="3_gmpsg"]
+[ext_resource type="Resource" uid="uid://csx0kp3jn8lt6" path="res://resources/asteroid/small_asteroid_3.tres" id="4_tkyod"]
+[ext_resource type="Resource" uid="uid://vy7lhwemfeas" path="res://resources/asteroid/small_asteroid_4.tres" id="5_x0q66"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gmpsg"]
-radius = 28.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_lra0s"]
+points = PackedVector2Array(-16, -25, 23, -26, 23, -13, 11, 1, 17, 17, 17, 25, -5, 27, -20, 22, -24, 17, -20, -3)
 
 [resource]
 script = ExtResource("1_lra0s")
 texture = ExtResource("2_cjtu6")
-collision_shape = SubResource("CircleShape2D_gmpsg")
+collision_shape = SubResource("ConvexPolygonShape2D_lra0s")
 sprite_material = ExtResource("2_rxhd2")
 hp = 8
 wrap_margin = 64.0

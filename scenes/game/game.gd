@@ -38,6 +38,7 @@ func _connect_signals() -> void:
 func _on_player_death_requested() -> void:
 	await get_tree().create_timer(1.0).timeout
 	game_over_screen.show()
+	SaveManager.save_game(GameController.session)
 
 
 func _on_game_pause_set(pause: bool) -> void:
@@ -54,4 +55,5 @@ func _on_player_hit() -> void:
 
 func _on_add_score_requested(score: int) -> void:
 	_player_score += score
+	GameController.session.score = _player_score
 	Signals.ui_score_change_requested.emit(_player_score)

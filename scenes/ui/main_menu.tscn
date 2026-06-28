@@ -31,6 +31,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_btxxm")
 
 [node name="Background" type="TextureRect" parent="Control" unique_id=550735604]
 layout_mode = 1
@@ -60,7 +61,36 @@ text = "Asteroids"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=11035328]
+[node name="HighScoreHBoxContainer" type="HBoxContainer" parent="Control" unique_id=1181649618]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -20.0
+offset_right = 65.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="HighScoreTextLabel" type="Label" parent="Control/HighScoreHBoxContainer" unique_id=250879397]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.51718444, 0.5171845, 0.51718444, 1)
+text = "High score:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="Control/HighScoreHBoxContainer" unique_id=1174589816]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5176471, 0.5176471, 0.5176471, 1)
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsVBoxContainer" type="VBoxContainer" parent="Control" unique_id=11035328]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -74,7 +104,7 @@ offset_bottom = 104.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartGameButton" type="TextureButton" parent="Control/VBoxContainer" unique_id=2034700831]
+[node name="StartGameButton" type="TextureButton" parent="Control/ButtonsVBoxContainer" unique_id=2034700831]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("2_btxxm")
@@ -83,7 +113,7 @@ texture_pressed = ExtResource("3_uhagc")
 texture_hover = ExtResource("3_uhagc")
 stretch_mode = 1
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/StartGameButton" unique_id=755522220]
+[node name="Label" type="Label" parent="Control/ButtonsVBoxContainer/StartGameButton" unique_id=755522220]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -98,7 +128,7 @@ text = "Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="QuitButton" type="TextureButton" parent="Control/VBoxContainer" unique_id=175294813]
+[node name="QuitButton" type="TextureButton" parent="Control/ButtonsVBoxContainer" unique_id=175294813]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 theme = ExtResource("2_btxxm")
@@ -107,7 +137,7 @@ texture_pressed = ExtResource("4_x2yvf")
 texture_hover = ExtResource("4_x2yvf")
 stretch_mode = 1
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/QuitButton" unique_id=1606730896]
+[node name="Label" type="Label" parent="Control/ButtonsVBoxContainer/QuitButton" unique_id=1606730896]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -121,14 +151,14 @@ text = "Quit"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Container" type="Panel" parent="Control" unique_id=1595682532]
+[node name="HintsPanel" type="Panel" parent="Control" unique_id=1595682532]
 layout_mode = 0
 offset_left = 36.0
 offset_top = 180.0
 offset_right = 190.0
 offset_bottom = 333.0
 
-[node name="Label" type="Label" parent="Control/Container" unique_id=1668819139]
+[node name="Label" type="Label" parent="Control/HintsPanel" unique_id=1668819139]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -143,7 +173,7 @@ text = "Hints"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Container" unique_id=1125471401]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HintsPanel" unique_id=1125471401]
 layout_mode = 1
 anchors_preset = 14
 anchor_top = 0.5
@@ -156,68 +186,68 @@ grow_vertical = 2
 theme_override_constants/separation = 12
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/Container/VBoxContainer" unique_id=867341357]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HintsPanel/VBoxContainer" unique_id=867341357]
 layout_mode = 2
 alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Control/Container/VBoxContainer/HBoxContainer" unique_id=1596547039]
+[node name="GridContainer" type="GridContainer" parent="Control/HintsPanel/VBoxContainer/HBoxContainer" unique_id=1596547039]
 layout_mode = 2
 theme = ExtResource("2_btxxm")
 columns = 3
 
-[node name="Divider" type="Control" parent="Control/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=502992968]
+[node name="Divider" type="Control" parent="Control/HintsPanel/VBoxContainer/HBoxContainer/GridContainer" unique_id=502992968]
 layout_mode = 2
 
-[node name="W" type="TextureRect" parent="Control/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=1188551962]
+[node name="W" type="TextureRect" parent="Control/HintsPanel/VBoxContainer/HBoxContainer/GridContainer" unique_id=1188551962]
 layout_mode = 2
 texture = ExtResource("7_7suek")
 stretch_mode = 2
 
-[node name="Divider2" type="Control" parent="Control/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=344190894]
+[node name="Divider2" type="Control" parent="Control/HintsPanel/VBoxContainer/HBoxContainer/GridContainer" unique_id=344190894]
 layout_mode = 2
 
-[node name="A" type="TextureRect" parent="Control/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=419978496]
+[node name="A" type="TextureRect" parent="Control/HintsPanel/VBoxContainer/HBoxContainer/GridContainer" unique_id=419978496]
 layout_mode = 2
 texture = ExtResource("8_otr3d")
 stretch_mode = 2
 
-[node name="S" type="TextureRect" parent="Control/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=1276777998]
+[node name="S" type="TextureRect" parent="Control/HintsPanel/VBoxContainer/HBoxContainer/GridContainer" unique_id=1276777998]
 layout_mode = 2
 texture = ExtResource("9_8ekit")
 stretch_mode = 2
 
-[node name="D" type="TextureRect" parent="Control/Container/VBoxContainer/HBoxContainer/GridContainer" unique_id=1277650486]
+[node name="D" type="TextureRect" parent="Control/HintsPanel/VBoxContainer/HBoxContainer/GridContainer" unique_id=1277650486]
 layout_mode = 2
 texture = ExtResource("10_n4uci")
 stretch_mode = 2
 
-[node name="Hint" type="Label" parent="Control/Container/VBoxContainer/HBoxContainer" unique_id=855751425]
+[node name="Hint" type="Label" parent="Control/HintsPanel/VBoxContainer/HBoxContainer" unique_id=855751425]
 layout_mode = 2
 theme = ExtResource("2_btxxm")
 text = "- Move"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/Container/VBoxContainer" unique_id=1169486254]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/HintsPanel/VBoxContainer" unique_id=1169486254]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/Container/VBoxContainer/HBoxContainer2" unique_id=1743108223]
+[node name="TextureRect" type="TextureRect" parent="Control/HintsPanel/VBoxContainer/HBoxContainer2" unique_id=1743108223]
 layout_mode = 2
 texture = ExtResource("11_877pj")
 
-[node name="Hint" type="Label" parent="Control/Container/VBoxContainer/HBoxContainer2" unique_id=1929765831]
+[node name="Hint" type="Label" parent="Control/HintsPanel/VBoxContainer/HBoxContainer2" unique_id=1929765831]
 layout_mode = 2
 theme = ExtResource("2_btxxm")
 text = "- Shoot"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/Container/VBoxContainer" unique_id=2075873294]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/HintsPanel/VBoxContainer" unique_id=2075873294]
 layout_mode = 2
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Control/Container/VBoxContainer/HBoxContainer3" unique_id=2083406936]
+[node name="TextureRect" type="TextureRect" parent="Control/HintsPanel/VBoxContainer/HBoxContainer3" unique_id=2083406936]
 layout_mode = 2
 texture = ExtResource("13_877pj")
 
-[node name="Hint" type="Label" parent="Control/Container/VBoxContainer/HBoxContainer3" unique_id=1662160384]
+[node name="Hint" type="Label" parent="Control/HintsPanel/VBoxContainer/HBoxContainer3" unique_id=1662160384]
 layout_mode = 2
 theme = ExtResource("2_btxxm")
 text = "- Pause"
@@ -227,5 +257,5 @@ stream = SubResource("AudioStreamRandomizer_5qtu8")
 volume_db = -10.0
 autoplay = true
 
-[connection signal="button_down" from="Control/VBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_down"]
-[connection signal="button_down" from="Control/VBoxContainer/QuitButton" to="." method="_on_quit_button_button_down"]
+[connection signal="button_down" from="Control/ButtonsVBoxContainer/StartGameButton" to="." method="_on_start_game_button_button_down"]
+[connection signal="button_down" from="Control/ButtonsVBoxContainer/QuitButton" to="." method="_on_quit_button_button_down"]

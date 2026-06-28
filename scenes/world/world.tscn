@@ -719,6 +719,7 @@ max_warp_spawn_time = 15.0
 warp_spawn_timer = NodePath("Timers/WarpSpawnTimer")
 
 [node name="Backgrounds" type="Node2D" parent="." unique_id=1826386014]
+process_mode = 3
 
 [node name="Background" type="AnimatedSprite2D" parent="Backgrounds" unique_id=1790016968]
 position = Vector2(320, 180)

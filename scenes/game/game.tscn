@@ -2,9 +2,19 @@
 
 [ext_resource type="Script" uid="uid://fngmfujpltc6" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="PackedScene" uid="uid://ctp0k6geylpwj" path="res://scenes/world/world.tscn" id="2_7h61r"]
-[ext_resource type="PackedScene" uid="uid://da7kscba16viy" path="res://scenes/ui/hud.tscn" id="3_0sr1o"]
+[ext_resource type="Script" uid="uid://csamdhywla3cm" path="res://scenes/ui/hud.gd" id="3_5i0tg"]
+[ext_resource type="Theme" uid="uid://c43xwlxorrpj4" path="res://resources/themes/ui_theme.tres" id="3_lfrn8"]
 [ext_resource type="AudioStream" uid="uid://cm6ptf8ae7317" path="res://assets/audio/background_music/battle.wav" id="4_lfrn8"]
 [ext_resource type="AudioStream" uid="uid://b0fccjlfnskc5" path="res://assets/audio/background_music/meet-the-princess.wav" id="5_5i0tg"]
+[ext_resource type="Texture2D" uid="uid://jtbmnu7bi5b0" path="res://resources/atlases/ui/green_normal_button.tres" id="5_87uf6"]
+[ext_resource type="Script" uid="uid://k1um5xy2dujn" path="res://scenes/game/pause_screen.gd" id="5_kp23o"]
+[ext_resource type="Texture2D" uid="uid://td4q6qup16xt" path="res://resources/atlases/ui/green_pressed_button.tres" id="6_2a8rs"]
+[ext_resource type="Texture2D" uid="uid://bi61fcodprvm" path="res://resources/atlases/ui/red_normal_button.tres" id="8_5jirj"]
+[ext_resource type="Texture2D" uid="uid://b0010kohr17nn" path="res://resources/atlases/ui/red_pressed_button.tres" id="9_vaxfo"]
+[ext_resource type="Script" uid="uid://bq7fqheh1tdww" path="res://scenes/game/game_over_screen.gd" id="10_5jirj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kp23o"]
+bg_color = Color(0, 0, 0, 0.7254902)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qvja3"]
 streams_count = 2
@@ -15,10 +25,243 @@ stream_1/stream = ExtResource("5_5i0tg")
 script = ExtResource("1_sul5r")
 
 [node name="World" parent="." unique_id=1713281119 instance=ExtResource("2_7h61r")]
+process_mode = 1
 
-[node name="HUD" parent="." unique_id=1355053922 instance=ExtResource("3_0sr1o")]
+[node name="UI" type="Node2D" parent="." unique_id=1422831805]
+process_mode = 1
+
+[node name="HUD" type="CanvasLayer" parent="UI" unique_id=1414204171]
+layer = 0
+script = ExtResource("3_5i0tg")
+
+[node name="Panel" type="Panel" parent="UI/HUD" unique_id=841907542]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 16.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/HUD/Panel" unique_id=648555197]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 60.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="HPTextLabel" type="Label" parent="UI/HUD/Panel/HBoxContainer" unique_id=863131928]
+layout_mode = 2
+theme = ExtResource("3_lfrn8")
+theme_type_variation = &"ButtonLabel"
+theme_override_colors/font_color = Color(0, 0.70980394, 0, 1)
+text = "HP:"
+
+[node name="HPLabel" type="Label" parent="UI/HUD/Panel/HBoxContainer" unique_id=720657048]
+layout_mode = 2
+theme = ExtResource("3_lfrn8")
+theme_type_variation = &"ButtonLabel"
+text = "3"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/HUD/Panel" unique_id=191551671]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -20.0
+offset_right = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ScoreTextLabel" type="Label" parent="UI/HUD/Panel/HBoxContainer2" unique_id=1511517328]
+layout_mode = 2
+theme = ExtResource("3_lfrn8")
+theme_type_variation = &"ButtonLabel"
+theme_override_colors/font_color = Color(0.76862746, 0.70980394, 0, 1)
+text = "Score:"
+
+[node name="ScoreLabel" type="Label" parent="UI/HUD/Panel/HBoxContainer2" unique_id=1618092180]
+layout_mode = 2
+theme = ExtResource("3_lfrn8")
+theme_type_variation = &"ButtonLabel"
+text = "1111"
+
+[node name="PauseScreen" type="CanvasLayer" parent="UI" unique_id=973101153]
+process_mode = 2
+layer = 10
+script = ExtResource("5_kp23o")
+
+[node name="Panel" type="Panel" parent="UI/PauseScreen" unique_id=159740884]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_lfrn8")
+
+[node name="PausedTextLabel" type="Label" parent="UI/PauseScreen/Panel" unique_id=76020548]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -75.0
+offset_right = 65.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"GameNameLabel"
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/PauseScreen/Panel" unique_id=1203049059]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 21.0
+offset_right = 47.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeGameButton" type="TextureButton" parent="UI/PauseScreen/Panel/VBoxContainer" unique_id=1809977359]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("3_lfrn8")
+texture_normal = ExtResource("5_87uf6")
+texture_pressed = ExtResource("6_2a8rs")
+texture_hover = ExtResource("6_2a8rs")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="UI/PauseScreen/Panel/VBoxContainer/ResumeGameButton" unique_id=1039578973]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("3_lfrn8")
+theme_type_variation = &"ButtonLabel"
+text = "Resume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="UI/PauseScreen/Panel/VBoxContainer" unique_id=170978206]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("3_lfrn8")
+texture_normal = ExtResource("8_5jirj")
+texture_pressed = ExtResource("9_vaxfo")
+texture_hover = ExtResource("9_vaxfo")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="UI/PauseScreen/Panel/VBoxContainer/MainMenuButton" unique_id=26403870]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("3_lfrn8")
+theme_type_variation = &"ButtonLabel"
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverScreen" type="CanvasLayer" parent="UI" unique_id=1451798629]
+process_mode = 3
+layer = 20
+script = ExtResource("10_5jirj")
+
+[node name="Panel" type="Panel" parent="UI/GameOverScreen" unique_id=2051111550]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_lfrn8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kp23o")
+
+[node name="PausedTextLabel" type="Label" parent="UI/GameOverScreen/Panel" unique_id=729697566]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -75.0
+offset_right = 65.0
+offset_bottom = -53.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"GameNameLabel"
+theme_override_colors/font_color = Color(1, 0.1764706, 0.13725491, 1)
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/GameOverScreen/Panel" unique_id=155441522]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = 21.0
+offset_right = 47.0
+offset_bottom = 89.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="UI/GameOverScreen/Panel/VBoxContainer" unique_id=1927577861]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme = ExtResource("3_lfrn8")
+texture_normal = ExtResource("8_5jirj")
+texture_pressed = ExtResource("9_vaxfo")
+texture_hover = ExtResource("9_vaxfo")
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="UI/GameOverScreen/Panel/VBoxContainer/MainMenuButton" unique_id=119232696]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("3_lfrn8")
+theme_type_variation = &"ButtonLabel"
+text = "Quit"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=125432090]
 stream = SubResource("AudioStreamRandomizer_qvja3")
 volume_db = -17.0
 autoplay = true
+
+[connection signal="button_down" from="UI/PauseScreen/Panel/VBoxContainer/ResumeGameButton" to="UI/PauseScreen" method="_on_resume_game_button_button_down"]
+[connection signal="button_down" from="UI/PauseScreen/Panel/VBoxContainer/MainMenuButton" to="UI/PauseScreen" method="_on_main_menu_button_button_down"]
+[connection signal="button_down" from="UI/GameOverScreen/Panel/VBoxContainer/MainMenuButton" to="UI/GameOverScreen" method="_on_main_menu_button_button_down"]

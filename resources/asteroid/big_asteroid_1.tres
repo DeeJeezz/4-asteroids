@@ -7,13 +7,10 @@
 [ext_resource type="Resource" uid="uid://ckc1hlstc8yaf" path="res://resources/asteroid/medium_asteroid_2.tres" id="3_d5vrt"]
 [ext_resource type="Resource" uid="uid://d2pn4w8kansei" path="res://resources/asteroid/medium_asteroid_3.tres" id="4_ymnsl"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_3w2re"]
-points = PackedVector2Array(-47, -20, -28, -29, -20, -49, 25, -49, 48, -18, 40, -4, 50, 27, 45, 44, 8, 32, -8, 50, -42, 44, -47, 31, -37, 17, -49, -7)
-
 [resource]
 script = ExtResource("1_lra0s")
 texture = ExtResource("2_cjtu6")
-collision_shape = SubResource("ConvexPolygonShape2D_3w2re")
+collision_polygon = PackedVector2Array(42, -28, 47, -18, 40, -7, 43, 11, 49, 26, 49, 37, 44, 46, 39, 46, 35, 41, 26, 37, 19, 35, 13, 33, 5, 34, -1, 45, -6, 49, -22, 48, -38, 45, -45, 40, -46, 30, -39, 20, -38, 12, -47, 0, -50, -8, -48, -17, -41, -24, -34, -25, -27, -30, -25, -35, -23, -44, -19, -49, -5, -49, 1, -47, 11, -47, 13, -49, 20, -49, 25, -47, 32, -40)
 sprite_material = ExtResource("2_cr52r")
 hp = 12
 wrap_margin = 100.0

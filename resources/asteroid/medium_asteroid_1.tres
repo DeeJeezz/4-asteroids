@@ -8,13 +8,10 @@
 [ext_resource type="Resource" uid="uid://csx0kp3jn8lt6" path="res://resources/asteroid/small_asteroid_3.tres" id="4_tkyod"]
 [ext_resource type="Resource" uid="uid://vy7lhwemfeas" path="res://resources/asteroid/small_asteroid_4.tres" id="5_x0q66"]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_lra0s"]
-points = PackedVector2Array(-16, -25, 23, -26, 23, -13, 11, 1, 17, 17, 17, 25, -5, 27, -20, 22, -24, 17, -20, -3)
-
 [resource]
 script = ExtResource("1_lra0s")
 texture = ExtResource("2_cjtu6")
-collision_shape = SubResource("ConvexPolygonShape2D_lra0s")
+collision_polygon = PackedVector2Array(23, -22, 23, -16, 22, -11, 20, -9, 11, 0, 11, 10, 15, 13, 17, 17, 17, 24, 14, 26, -4, 26, -10, 25, -19, 22, -23, 17, -23, 13, -16, -21, -12, -26, 18, -26, 21, -25)
 sprite_material = ExtResource("2_rxhd2")
 hp = 8
 wrap_margin = 64.0

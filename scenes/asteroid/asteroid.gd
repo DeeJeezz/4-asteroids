@@ -5,7 +5,7 @@ signal destroyed(asteroid: Asteroid)
 signal split(asteroid: Asteroid)
 
 @export var sprite: MaterialSprite
-@export var collision_shape: CollisionShape2D
+@export var collision_polygon: CollisionPolygon2D
 @export var wrapped: Wrapped
 
 var current_config: AsteroidConfig
@@ -50,7 +50,7 @@ func setup_from_config(config: AsteroidConfig) -> void:
 	sprite.texture = config.texture
 	sprite.material = config.sprite_material.duplicate()
 	# Setup collisions.
-	collision_shape.shape = config.collision_shape
+	collision_polygon.polygon = config.collision_polygon
 	# Set how far offscreen wrap will be.
 	wrapped.wrap_margin = config.wrap_margin
 

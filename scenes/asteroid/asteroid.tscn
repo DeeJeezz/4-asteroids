@@ -1,32 +1,29 @@
 [gd_scene format=3 uid="uid://blpstx4vgrd1h"]
 
 [ext_resource type="Script" uid="uid://dcve541pq1ls4" path="res://scenes/asteroid/asteroid.gd" id="1_ctvhk"]
-[ext_resource type="Texture2D" uid="uid://cjdlgdyartyix" path="res://resources/atlases/asteroids/medium_asteroid_atlas_3.tres" id="2_af6hy"]
+[ext_resource type="Texture2D" uid="uid://r2h1ucedfcqh" path="res://resources/atlases/asteroids/small_asteroid_atlas_4.tres" id="2_0e8g3"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="9_otu8h"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="10_d6s71"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_cnsyf"]
-radius = 24.0
-
-[node name="Asteroid" type="Area2D" unique_id=142036267 node_paths=PackedStringArray("sprite", "collision_shape", "wrapped")]
+[node name="Asteroid" type="Area2D" unique_id=142036267 node_paths=PackedStringArray("sprite", "collision_polygon", "wrapped")]
 collision_layer = 258
 collision_mask = 513
 script = ExtResource("1_ctvhk")
 sprite = NodePath("Sprite2D")
-collision_shape = NodePath("CollisionShape2D")
+collision_polygon = NodePath("CollisionPolygon2D")
 wrapped = NodePath("Wrapped")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=29348395]
-texture = ExtResource("2_af6hy")
+texture = ExtResource("2_0e8g3")
 region_rect = Rect2(273, 12, 100, 107)
 script = ExtResource("9_otu8h")
 hit_flash_duration = 0.3
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=750899938]
-shape = SubResource("CircleShape2D_cnsyf")
-
 [node name="Wrapped" type="Node" parent="." unique_id=1657980441]
 script = ExtResource("10_d6s71")
 wrap_margin = 128.0
 metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1988586949]
+polygon = PackedVector2Array(12, -4, 12, -1, 6, 7, 4, 12, 1, 13, -4, 12, -8, 10, -12, 5, -12, 2, -9, -4, -9, -8, -5, -13, 1, -13, 3, -12, 7, -11)

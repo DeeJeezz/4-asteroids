@@ -6,7 +6,7 @@ extends Resource
 
 @export_category("Appearance settings")
 @export var texture: Texture2D
-@export var collision_shape: Shape2D
+@export var collision_polygon: PackedVector2Array
 @export var sprite_material: ShaderMaterial
 @export_category("Behaviour settings")
 @export var hp: int

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://qth4hfpsie0k"]
+
+[ext_resource type="Script" uid="uid://ugr0sic823a3" path="res://scenes/gun/gun.gd" id="1_eo2c1"]
+[ext_resource type="PackedScene" uid="uid://bt4yol4gmmie6" path="res://scenes/bullet/bullet.tscn" id="2_084rm"]
+[ext_resource type="AudioStream" uid="uid://cliwrjkhs2qwn" path="res://assets/audio/sfx/Asteroids_Fire.ogg" id="3_75yrm"]
+
+[node name="Gun" type="Node2D" unique_id=772521343]
+show_behind_parent = true
+script = ExtResource("1_eo2c1")
+bullet_scene = ExtResource("2_084rm")
+cooldown = 0.5
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=1710136987]
+rotation = 1.5707964
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="." unique_id=941629832]
+stream = ExtResource("3_75yrm")
+volume_db = -20.0

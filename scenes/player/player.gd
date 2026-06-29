@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 	_handle_input()
 	if _can_move:
 		if _target_thrust != 0:
-			var forward := Vector2.DOWN.rotated(rotation)
+			var forward := Vector2.LEFT.rotated(rotation)
 			velocity += forward * _target_thrust * delta
 		if _target_torque != 0:
 			rotation += _target_torque * delta
@@ -65,7 +65,7 @@ func _handle_input() -> void:
 
 	var rotation_thrust: float = Input.get_axis(&"move_left", &"move_right")
 	_target_torque = rotation_thrust * rotation_speed
-	
+
 	if thrust != 0 or rotation_thrust != 0:
 		if not move_sfx.playing:
 			move_sfx.play()

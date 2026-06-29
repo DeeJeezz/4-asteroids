@@ -56,6 +56,10 @@ folder_colors={
 "res://shaders/": "blue"
 }
 
+[global_group]
+
+player=""
+
 [input]
 
 move_left={

@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://cmifji83ybt06"]
+
+[ext_resource type="Script" uid="uid://bw1bjv7mwa1gv" path="res://scenes/saucer/saucer.gd" id="1_kjq34"]
+[ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="2_gx2ob"]
+[ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="3_2myk3"]
+[ext_resource type="Texture2D" uid="uid://bud5ty7iq78py" path="res://assets/img/spaceship/saucer_ship.png" id="4_gx2ob"]
+[ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="5_lpq51"]
+[ext_resource type="PackedScene" uid="uid://qth4hfpsie0k" path="res://scenes/gun/gun.tscn" id="6_2myk3"]
+[ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="7_usy0f"]
+[ext_resource type="Texture2D" uid="uid://b4ovenfs7lvpt" path="res://assets/img/explosion/explosion_1_01.png" id="8_py8pk"]
+[ext_resource type="Texture2D" uid="uid://k0muxdy3cp2x" path="res://assets/img/explosion/explosion_1_02.png" id="9_iup1i"]
+[ext_resource type="Texture2D" uid="uid://dy2tnws4j8q1c" path="res://assets/img/explosion/explosion_1_03.png" id="10_ohg1u"]
+[ext_resource type="Texture2D" uid="uid://dwhm7x4tp6nwc" path="res://assets/img/explosion/explosion_1_04.png" id="11_hexo5"]
+[ext_resource type="Texture2D" uid="uid://cbpugok8co361" path="res://assets/img/explosion/explosion_1_05.png" id="12_ek2c8"]
+[ext_resource type="Texture2D" uid="uid://by1gd8l6o5wup" path="res://assets/img/explosion/explosion_1_06.png" id="13_top16"]
+[ext_resource type="Texture2D" uid="uid://cy0ecsm1de8ow" path="res://assets/img/explosion/explosion_1_07.png" id="14_8frim"]
+[ext_resource type="Texture2D" uid="uid://cb6un0icornlh" path="res://assets/img/explosion/explosion_1_08.png" id="15_kbp20"]
+[ext_resource type="Texture2D" uid="uid://ucjmkauvxppn" path="res://assets/img/explosion/explosion_1_09.png" id="16_nf0g6"]
+[ext_resource type="Texture2D" uid="uid://checw7tcur234" path="res://assets/img/explosion/explosion_1_10.png" id="17_jxbs6"]
+[ext_resource type="Texture2D" uid="uid://bxbv2pq81k2y1" path="res://assets/img/explosion/explosion_1_11.png" id="18_6ebel"]
+[ext_resource type="AudioStream" uid="uid://mat1jjgn2l2v" path="res://assets/audio/sfx/Asteroids_Move.ogg" id="19_c4blx"]
+[ext_resource type="AudioStream" uid="uid://dbojgrnf1qcwh" path="res://assets/audio/sfx/Asteroids_Damage.ogg" id="20_3c2xv"]
+[ext_resource type="AudioStream" uid="uid://fb2lut0gx4nq" path="res://assets/audio/sfx/Asteroids_Explosion.ogg" id="21_5whl1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ja7i"]
+shader = ExtResource("3_2myk3")
+shader_parameter/use_cracks = false
+shader_parameter/use_hit_flash = false
+shader_parameter/use_iframes_flash = false
+shader_parameter/crack_color = Color(0.05, 0.04, 0.03, 1)
+shader_parameter/crack_amount = 1.0
+shader_parameter/crack_scale = 12.0
+shader_parameter/crack_thickness = 0.025
+shader_parameter/crack_opacity = 1.0
+shader_parameter/crack_pixel_snap = 16.0
+shader_parameter/crack_seed = 0.0
+shader_parameter/hit_flash_color = Color(1, 0, 0.07016479, 0.675)
+shader_parameter/hit_flash_amount = 0.0
+shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
+shader_parameter/iframes_speed = 16.0
+
+[sub_resource type="Gradient" id="Gradient_qek5x"]
+offsets = PackedFloat32Array(0, 0.73777175)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vrn1f"]
+gradient = SubResource("Gradient_qek5x")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacey"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_py8pk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iup1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ohg1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_hexo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ek2c8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_top16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8frim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kbp20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nf0g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jxbs6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6ebel")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": 0,
+"name": &"default",
+"speed": 18.0
+}]
+
+[node name="Saucer" type="CharacterBody2D" unique_id=1486296369]
+collision_layer = 257
+collision_mask = 3
+motion_mode = 1
+slide_on_ceiling = false
+script = ExtResource("1_kjq34")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=554279101]
+collision_layer = 256
+collision_mask = 514
+script = ExtResource("2_gx2ob")
+metadata/_custom_type_script = "uid://bkpfvxigulyku"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=444015894]
+polygon = PackedVector2Array(6.0000005, -6.9999995, 10, -2.9999995, 16, -0.9999993, 16, 1.0000007, 10, 3.0000005, 5.9999995, 7.0000005, 16, 9.000001, 14.999999, 11.000001, -7.430936e-07, 17, -4.000001, 17, -13, 9.999999, -16, 3.9999993, -16, -4.0000005, -13, -10.000001, -3.9999993, -17, 7.430936e-07, -17, 14.000001, -11.999999, 17, -8.999999)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=332837393]
+polygon = PackedVector2Array(6.0000005, -6.9999995, 10, -2.9999995, 16, -0.9999993, 16, 1.0000007, 10, 3.0000005, 5.9999995, 7.0000005, 16, 9.000001, 14.999999, 11.000001, -7.430936e-07, 17, -4.000001, 17, -13, 9.999999, -16, 3.9999993, -16, -4.0000005, -13, -10.000001, -3.9999993, -17, 7.430936e-07, -17, 15.000001, -10.999999, 17, -8.999999)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=115094439]
+material = SubResource("ShaderMaterial_8ja7i")
+texture = ExtResource("4_gx2ob")
+script = ExtResource("5_lpq51")
+hit_flash_duration = 0.5
+metadata/_custom_type_script = "uid://dguveqsuf868b"
+
+[node name="Gun" parent="Sprite2D" unique_id=772521343 instance=ExtResource("6_2myk3")]
+position = Vector2(27, 0)
+cooldown = 1.0
+
+[node name="Wrapped" type="Node" parent="." unique_id=1611969458]
+script = ExtResource("7_usy0f")
+metadata/_custom_type_script = "uid://de0bx0ohcwxjy"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=938524974]
+energy = 0.4
+texture = SubResource("GradientTexture2D_vrn1f")
+
+[node name="Explosion" type="AnimatedSprite2D" parent="." unique_id=655190095]
+sprite_frames = SubResource("SpriteFrames_bacey")
+frame = 11
+frame_progress = 1.0
+
+[node name="SFX" type="Node2D" parent="." unique_id=822838843]
+
+[node name="MoveSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=1187104927]
+stream = ExtResource("19_c4blx")
+volume_db = -10.0
+
+[node name="DamageSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=1829157967]
+stream = ExtResource("20_3c2xv")
+volume_db = -10.0
+
+[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="SFX" unique_id=774169033]
+stream = ExtResource("21_5whl1")
+volume_db = -10.0

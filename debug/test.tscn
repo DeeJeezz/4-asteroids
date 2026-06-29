@@ -1,26 +1,13 @@
 [gd_scene format=3 uid="uid://ciin25b4anaei"]
 
 [ext_resource type="PackedScene" uid="uid://jyt05nciv3am" path="res://scenes/player/player.tscn" id="1_bdhpj"]
-[ext_resource type="PackedScene" uid="uid://blpstx4vgrd1h" path="res://scenes/asteroid/asteroid.tscn" id="2_3hy8g"]
-[ext_resource type="PackedScene" path="res://scenes/asteroid/medium_asteroid.tscn" id="4_08xoe"]
-[ext_resource type="PackedScene" path="res://scenes/asteroid/small_asteroid.tscn" id="5_xow25"]
-[ext_resource type="PackedScene" uid="uid://ey7ojoq6wh76" path="res://scenes/warp/warp.tscn" id="6_sa7xw"]
+[ext_resource type="PackedScene" uid="uid://cmifji83ybt06" path="res://scenes/saucer/saucer.tscn" id="2_bdhpj"]
 
 [node name="Test" type="Node2D" unique_id=32416756]
-
-[node name="Warp" parent="." unique_id=538909338 instance=ExtResource("6_sa7xw")]
-position = Vector2(143, 240)
-drag_force = 50.0
-warp_area_radius = 25.0
 
 [node name="Player" parent="." unique_id=1469936958 instance=ExtResource("1_bdhpj")]
 position = Vector2(208, 247)
 
-[node name="MediumAsteroid" parent="." unique_id=2000554317 instance=ExtResource("4_08xoe")]
-position = Vector2(287, 76)
-
-[node name="SmallAsteroid" parent="." unique_id=1666082907 instance=ExtResource("5_xow25")]
-position = Vector2(83, 96)
-
-[node name="BigAsteroid" parent="." unique_id=504756999 instance=ExtResource("2_3hy8g")]
-position = Vector2(464, 249)
+[node name="Saucer" parent="." unique_id=1486296369 instance=ExtResource("2_bdhpj")]
+position = Vector2(322, 170)
+shooting_angle = 0.5235987755982988

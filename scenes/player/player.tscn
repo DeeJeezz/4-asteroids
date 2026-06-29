@@ -2,13 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dr8mtk1e7rnqc" path="res://scenes/player/player.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://de0bx0ohcwxjy" path="res://scripts/components/wrapped.gd" id="2_dovo2"]
-[ext_resource type="Script" uid="uid://ugr0sic823a3" path="res://scenes/player/gun.gd" id="2_gmlin"]
-[ext_resource type="Texture2D" uid="uid://clpnquvlh5v71" path="res://assets/img/spaceship/SpaceShip (437).png" id="2_p47bc"]
+[ext_resource type="Texture2D" uid="uid://clpnquvlh5v71" path="res://assets/img/spaceship/player_ship.png" id="2_p47bc"]
 [ext_resource type="Script" uid="uid://bkpfvxigulyku" path="res://scripts/components/hurtbox.gd" id="2_qek5x"]
-[ext_resource type="PackedScene" uid="uid://bt4yol4gmmie6" path="res://scenes/bullet/bullet.tscn" id="3_lvxji"]
 [ext_resource type="Shader" uid="uid://nw3rlx5s42mv" path="res://shaders/objects.gdshader" id="3_qek5x"]
 [ext_resource type="Script" uid="uid://dguveqsuf868b" path="res://scripts/components/material_sprite.gd" id="4_0owmy"]
-[ext_resource type="AudioStream" uid="uid://cliwrjkhs2qwn" path="res://assets/audio/sfx/Asteroids_Fire.ogg" id="8_8ydkj"]
+[ext_resource type="PackedScene" uid="uid://qth4hfpsie0k" path="res://scenes/gun/gun.tscn" id="6_3j4b4"]
 [ext_resource type="Texture2D" uid="uid://b4ovenfs7lvpt" path="res://assets/img/explosion/explosion_1_01.png" id="9_lgqa7"]
 [ext_resource type="Texture2D" uid="uid://k0muxdy3cp2x" path="res://assets/img/explosion/explosion_1_02.png" id="10_8ydkj"]
 [ext_resource type="Texture2D" uid="uid://dy2tnws4j8q1c" path="res://assets/img/explosion/explosion_1_03.png" id="11_3j4b4"]
@@ -41,12 +39,12 @@ shader_parameter/hit_flash_amount = 0.0
 shader_parameter/iframes_color = Color(1, 1, 1, 0.5)
 shader_parameter/iframes_speed = 16.0
 
-[sub_resource type="Gradient" id="Gradient_qek5x"]
+[sub_resource type="Gradient" id="Gradient_3j4b4"]
 offsets = PackedFloat32Array(0, 0.73777175)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4xuyx"]
-gradient = SubResource("Gradient_qek5x")
+gradient = SubResource("Gradient_3j4b4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
@@ -94,7 +92,7 @@ animations = [{
 "speed": 18.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1087837171]
+[node name="Player" type="CharacterBody2D" unique_id=1087837171 groups=["player"]]
 collision_mask = 0
 motion_mode = 1
 slide_on_ceiling = false
@@ -106,41 +104,26 @@ thrust_force = 100.0
 rotation_speed = 3.0
 
 [node name="Hurtbox" type="Area2D" parent="." unique_id=934051890]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
+collision_layer = 256
+collision_mask = 514
 script = ExtResource("2_qek5x")
 metadata/_custom_type_script = "uid://bkpfvxigulyku"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hurtbox" unique_id=554624268]
-rotation = -1.5707964
 polygon = PackedVector2Array(3.0000002, -7, 12, -5.9999995, 20, -4.999999, 25, -1.9999989, 25, 2.0000012, 20, 5.000001, 12, 6.0000005, 2.9999998, 7, -3.0000002, 7, -7.0000005, 13, -13.000001, 12.999999, -19, 7.999999, -24, 4.999999, -24, -5.000001, -19, -8.000001, -12.999999, -13.000001, -6.9999995, -13, -2.9999998, -7)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1116834371]
-rotation = -1.5707964
 polygon = PackedVector2Array(3, -6, 12, -5, 20, -4, 23, -2, 23, 2, 20, 4, 12, 5, 3, 6, -3, 6, -7, 12, -13, 12, -18, 7, -23, 5, -23, -5, -18, -7, -13, -12, -7, -12, -3, -6)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1323982878]
 material = SubResource("ShaderMaterial_tsylp")
-rotation = -1.5707964
 texture = ExtResource("2_p47bc")
 script = ExtResource("4_0owmy")
 hit_flash_duration = 0.5
 metadata/_custom_type_script = "uid://dguveqsuf868b"
 
-[node name="Gun" type="Node2D" parent="Sprite2D" unique_id=2025383486]
-show_behind_parent = true
-position = Vector2(27, 0)
-script = ExtResource("2_gmlin")
-bullet_scene = ExtResource("3_lvxji")
-cooldown = 0.5
-
-[node name="BulletSpawnPoint" type="Marker2D" parent="Sprite2D/Gun" unique_id=159960807]
-rotation = 1.5707964
-
-[node name="ShootSFX" type="AudioStreamPlayer2D" parent="Sprite2D/Gun" unique_id=294305342]
-stream = ExtResource("8_8ydkj")
-volume_db = -20.0
+[node name="Gun" parent="Sprite2D" unique_id=772521343 instance=ExtResource("6_3j4b4")]
+position = Vector2(32, 0)
 
 [node name="Wrapped" type="Node" parent="." unique_id=807411937]
 script = ExtResource("2_dovo2")
